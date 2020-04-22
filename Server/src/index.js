@@ -1,10 +1,21 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
+import db from '../models';
 
 const app = express();
 
 app.use(cors());
+
+console.log('Now looking for user...');
+// db.users
+//   .findOne({
+//     where: { user_first_name: 'Austin' },
+//   })
+//   .then((results) => {
+//     console.log('Success');
+//     console.log(results);
+//   });
 
 app.get('/', (req, res) => {
   return res.send('Received a GET HTTP method');
