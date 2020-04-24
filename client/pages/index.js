@@ -27,6 +27,74 @@ function Copyright() {
   );
 }
 
+const cardData = [
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+  {
+    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
+    title: 'Image',
+    author: 'author',
+  },
+];
+
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -72,6 +140,11 @@ export default function Index() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth='sm'>
+            {/* <img
+              src='https://getoutaustin.s3.us-east-2.amazonaws.com/17.jpg'
+              width='100%'
+            /> */}
+
             <Typography
               component='h1'
               variant='h2'
@@ -110,22 +183,19 @@ export default function Index() {
         <Container className={classes.cardGrid} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {cardData.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='https://source.unsplash.com/random'
+                    image={card.img}
                     title='Image title'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant='h5' component='h2'>
-                      Heading
+                      {card.title}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
+                    <Typography>{cards.author}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button size='small' color='primary'>

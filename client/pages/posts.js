@@ -1,11 +1,11 @@
 import React from 'react';
 
-import PostPageContainer from '../components/posts/PostPageContainer.component';
+import Postings from '../components/postings/Postings.component';
 
 const Posts = () => {
   return (
     <>
-      <PostPageContainer />
+      <Postings />
     </>
   );
 };
