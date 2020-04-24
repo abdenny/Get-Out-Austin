@@ -1,11 +1,22 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import AirBnbSlider from "./AirBnbSlider.component";
 
 export const Form = (props) => {
   //Destructure props
+  let propForSlider = props;
   const {
-    values: { name, email, password, confirmPassword },
+    values: {
+      title,
+      description,
+      category,
+      photos,
+      price,
+      guest_range,
+      date_range,
+    },
     errors,
     touched,
     handleSubmit,
@@ -21,48 +32,64 @@ export const Form = (props) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        id="name"
-        name="name"
-        label="Name"
-        helperText={touched.name ? errors.name : ""}
-        error={touched.name && Boolean(errors.name)}
-        value={name}
-        onChange={change.bind(null, "name")}
-        fullWidth
-      />
-      <TextField
-        id="email"
-        name="email"
-        helperText={touched.email ? errors.email : ""}
-        error={touched.email && Boolean(errors.email)}
-        label="Email"
-        fullWidth
-        value={email}
-        onChange={change.bind(null, "email")}
-      />
-      <TextField
-        id="password"
-        name="password"
-        helperText={touched.password ? errors.password : ""}
-        error={touched.password && Boolean(errors.password)}
-        label="Password"
-        fullWidth
-        type="password"
-        value={password}
-        onChange={change.bind(null, "password")}
-      />
-      <TextField
-        id="confirmPassword"
-        name="confirmPassword"
-        helperText={touched.confirmPassword ? errors.confirmPassword : ""}
-        error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-        label="Confirm Password"
-        fullWidth
-        type="password"
-        value={confirmPassword}
-        onChange={change.bind(null, "confirmPassword")}
-      />
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="title"
+            name="title"
+            label="Title"
+            helperText={touched.title ? errors.title : ""}
+            error={touched.title && Boolean(errors.title)}
+            value={title}
+            onChange={change.bind(null, "title")}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="outlined-multiline-static"
+            name="description"
+            helperText={touched.description ? errors.description : ""}
+            error={touched.description && Boolean(errors.description)}
+            label="Description"
+            fullWidth
+            multiline
+            rows={4}
+            value={description}
+            onChange={change.bind(null, "description")}
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            id="category"
+            name="category"
+            helperText={touched.category ? errors.category : ""}
+            error={touched.category && Boolean(errors.category)}
+            label="Category"
+            fullWidth
+            value={category}
+            onChange={change.bind(null, "category")}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            id="photos"
+            name="photos"
+            label="Photos"
+            helperText={touched.photos ? errors.photos : ""}
+            error={touched.photos && Boolean(errors.photos)}
+            value={photos}
+            onChange={change.bind(null, "photos")}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <AirBnbSlider props={propForSlider} changeHandle={change} />
+        </Grid>
+        <Grid item xs={12}></Grid>
+      </Grid>
+      {/* Todo: add Form for Date */}
       <Button
         type="submit"
         fullWidth

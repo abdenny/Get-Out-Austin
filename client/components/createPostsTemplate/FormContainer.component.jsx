@@ -7,24 +7,16 @@ import validationSchema from "./yupValidation";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+    marginTop: theme.spacing * 8,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: `${theme.spacing * 5}px ${theme.spacing * 5}px ${
+      theme.spacing * 5
+    }px`,
   },
   container: {
-    width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
+    maxWidth: "200px",
   },
 }));
 
@@ -32,13 +24,10 @@ const InputForm = (props) => {
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      category: "",
-      photos: "",
-      price: 0,
-      guest_range: [1, 20],
-      date_range: ["start", "end"],
+      name: "",
+      email: "",
+      confirmPassword: "",
+      password: "",
     },
   });
   const onSubmit = (data) => {
@@ -48,7 +37,10 @@ const InputForm = (props) => {
     <React.Fragment>
       <div className={classes.container}>
         <Paper elevation={1} className={classes.paper}>
-          <h1>Add a Posting</h1>
+          <h1>Form</h1>
+          <div>
+            Name: {formik.values.name} Email: {formik.values.email}
+          </div>
           <Formik
             render={(props) => <Form {...props} />}
             handleChange={formik.handleChange}
