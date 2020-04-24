@@ -6,7 +6,7 @@ import PostingsData from './PostingsData.component';
 const PostingsContent = () => {
   const getPostingCard = (postingObj) => {
     return (
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <PostCard {...postingObj} />
       </Grid>
     );

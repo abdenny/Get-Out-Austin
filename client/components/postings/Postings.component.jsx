@@ -8,11 +8,16 @@ const Postings = () => {
     <Grid container direction='column'>
       <Grid item></Grid>
       <Grid item container>
-        {/* <Grid item xs={false} sm={2} /> */}
-        <Grid item xs={12} sm={8} md={7}>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={7}
+          style={{ maxHeight: '100vh', overflow: 'auto' }}
+        >
           <PostingsContent />
         </Grid>
-        <Grid item xs={false} sm={4} md={5}>
+        <Grid item xs={false} sm={4} md={5} style={{ overflow: 'hidden' }}>
           <PostingsMap />
         </Grid>
       </Grid>
