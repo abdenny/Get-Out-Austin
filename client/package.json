@@ -6,11 +6,13 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
+    "formik": "^2.1.4",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-map-gl": "^5.2.5"
+    "react-map-gl": "^5.2.5",
+    "yup": "^0.28.4"
   },
   "scripts": {
     "dev": "next",

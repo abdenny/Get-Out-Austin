@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
+
+import FormContainer from "../components/createPosts/FormContainer.component";
 
 const CreatePost = () => {
-  return <>createpost</>;
+  return (
+    <>
+      <FormContainer />
+    </>
+  );
 };
 
 export default CreatePost;
