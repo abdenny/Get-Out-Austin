@@ -1,96 +1,96 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import PostToolbar from './PostToolbar.component';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import IconButton from "@material-ui/core/IconButton";
+import InfoIcon from "@material-ui/icons/Info";
+import PostToolbar from "./PostToolbar.component";
 // import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: '#fff',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: "#fff",
   },
   gridList: {
-    width: '70vw',
-    height: '100vh',
+    width: "80%",
+    height: "100vh",
   },
   icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
+    color: "rgba(255, 255, 255, 0.54)",
   },
 }));
 
 const tileData = [
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
   {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg',
-    title: 'Image',
-    author: 'author',
+    img: "https://getoutaustin.s3.us-east-2.amazonaws.com/4.jpeg",
+    title: "Image",
+    author: "author",
   },
 ];
 
@@ -100,9 +100,9 @@ export default function TitlebarGridList() {
   return (
     <div className={classes.root}>
       <GridList cellHeight={300} className={classes.gridList}>
-        <GridListTile key='Subheader' cols={4} style={{ height: 'auto' }}>
+        <GridListTile key="Subheader" cols={4} style={{ height: "auto" }}>
           {/* <ListSubheader component='div'>TOOLBAR GOES HERE</ListSubheader> */}
-          <PostToolbar />
+          {/* <PostToolbar /> */}
         </GridListTile>
         {tileData.map((tile) => (
           <GridListTile key={tile.img}>
