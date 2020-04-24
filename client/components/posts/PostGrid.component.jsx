@@ -6,6 +6,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import PostToolbar from './PostToolbar.component';
 // import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#fff',
   },
   gridList: {
-    width: '60vw',
+    width: '70vw',
     height: '100vh',
   },
   icon: {
@@ -98,9 +99,10 @@ export default function TitlebarGridList() {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key='Subheader' cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component='div'>December</ListSubheader>
+      <GridList cellHeight={300} className={classes.gridList}>
+        <GridListTile key='Subheader' cols={4} style={{ height: 'auto' }}>
+          {/* <ListSubheader component='div'>TOOLBAR GOES HERE</ListSubheader> */}
+          <PostToolbar />
         </GridListTile>
         {tileData.map((tile) => (
           <GridListTile key={tile.img}>
