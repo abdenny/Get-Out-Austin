@@ -2,11 +2,11 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import PostingsContent from './PostingsContent.component';
 import PostingsMap from '../map/PostingsMap.component';
+import PostToolBar from './Toolbar.components';
 
-const Postings = () => {
+const Postings = (props) => {
   return (
     <Grid container direction='column'>
-      <Grid item></Grid>
       <Grid item container>
         <Grid
           item
@@ -15,7 +15,8 @@ const Postings = () => {
           md={7}
           style={{ maxHeight: '100vh', overflow: 'auto' }}
         >
-          <PostingsContent />
+          <PostToolBar />
+          <PostingsContent props={props} />
         </Grid>
         <Grid item xs={false} sm={4} md={5} style={{ overflow: 'hidden' }}>
           <PostingsMap />

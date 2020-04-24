@@ -1,99 +1,16 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const cardData = [
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-  {
-    img: 'https://getoutaustin.s3.us-east-2.amazonaws.com/15.jpg',
-    title: 'Image',
-    author: 'author',
-  },
-];
+import Link from 'next/link';
+import 'isomorphic-unfetch';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -129,9 +46,8 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Index() {
+export default function Index(props) {
   const classes = useStyles();
-
   return (
     <React.Fragment>
       <CssBaseline />
@@ -152,7 +68,7 @@ export default function Index() {
               color='textPrimary'
               gutterBottom
             >
-              Album layout
+              Get Out, Austin
             </Typography>
             <Typography
               variant='h5'
@@ -160,16 +76,18 @@ export default function Index() {
               color='textSecondary'
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Designed to connect adventure seekers. Outdoor lovers all around
+              Austin can find and host excursions. Skydiving, Kayaking, Fishing,
+              and more...
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify='center'>
                 <Grid item>
-                  <Button variant='contained' color='primary'>
-                    Main call to action
-                  </Button>
+                  <Link href='/posts'>
+                    <Button variant='contained' color='primary'>
+                      View Postings
+                    </Button>
+                  </Link>
                 </Grid>
                 <Grid item>
                   <Button variant='outlined' color='primary'>
@@ -183,27 +101,26 @@ export default function Index() {
         <Container className={classes.cardGrid} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cardData.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+            {props.posts.map((card, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
+                <Card key={index} className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={card.img}
+                    image={card.post_images}
                     title='Image title'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant='h5' component='h2'>
-                      {card.title}
+                      {card.post_title}
                     </Typography>
-                    <Typography>{cards.author}</Typography>
+                    <Typography>{card.post_description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size='small' color='primary'>
-                      View
-                    </Button>
-                    <Button size='small' color='primary'>
-                      Edit
-                    </Button>
+                    <Link href={`/posts/${card.id}`}>
+                      <Button size='small' color='primary'>
+                        View
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>
@@ -211,22 +128,20 @@ export default function Index() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant='h6' align='center' gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant='subtitle1'
-          align='center'
-          color='textSecondary'
-          component='p'
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  const res = await fetch('http://localhost:3001/api/v1/posts');
+  const posts = await res.json();
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  };
 }
