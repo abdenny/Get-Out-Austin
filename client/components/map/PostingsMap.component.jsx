@@ -4,7 +4,7 @@ import ReactMapGL from 'react-map-gl';
 class PostMap extends Component {
   state = {
     viewport: {
-      width: '40vw',
+      width: '600px',
       height: '100vh',
       latitude: 30.266666,
       longitude: -97.7431,

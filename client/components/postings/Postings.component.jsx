@@ -8,17 +8,19 @@ const Postings = (props) => {
   return (
     <Grid container direction='column'>
       <Grid item container>
+        <Grid item xs={12} sm={12} md={12}>
+          <PostToolBar />
+        </Grid>
         <Grid
           item
           xs={12}
-          sm={8}
+          sm={12}
           md={7}
           style={{ maxHeight: '100vh', overflow: 'auto' }}
         >
-          <PostToolBar />
           <PostingsContent props={props} />
         </Grid>
-        <Grid item xs={false} sm={4} md={5} style={{ overflow: 'hidden' }}>
+        <Grid item xs={false} sm={false} md={5} style={{ overflow: 'hidden' }}>
           <PostingsMap />
         </Grid>
       </Grid>

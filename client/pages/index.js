@@ -44,23 +44,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Index(props) {
   const classes = useStyles();
+  let filteredItems = [];
+  for (let index = 0; index <= 8; index++) {
+    filteredItems.push(props.posts[index]);
+  }
   return (
     <React.Fragment>
       <CssBaseline />
-
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth='sm'>
-            {/* <img
-              src='https://getoutaustin.s3.us-east-2.amazonaws.com/17.jpg'
-              width='100%'
-            /> */}
-
             <Typography
               component='h1'
               variant='h2'
@@ -101,7 +97,7 @@ export default function Index(props) {
         <Container className={classes.cardGrid} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {props.posts.map((card, index) => (
+            {filteredItems.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card key={index} className={classes.card}>
                   <CardMedia
