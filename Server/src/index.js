@@ -1,14 +1,42 @@
-import "dotenv/config";
-import cors from "cors";
-import express from "express";
-import db from "../models";
-import bodyParser from "body-parser";
-import api from "./api/api";
-import dbwrite from "./dbwrite/dbwrite";
+import 'dotenv/config';
+import cors from 'cors';
+import express from 'express';
+import db from '../models';
+import bodyParser from 'body-parser';
+import api from './api/api';
+import dbwrite from './dbwrite/dbwrite';
 
 const app = express();
 
 app.use(cors());
+
+//////////ADDING POSTS
+// const date = new Date();
+// date.setDate(date.getDate() + 365);
+
+// db.posts.create({
+//   post_author: 12,
+//   post_title: 'Golf Lessons',
+//   post_description: "Learn from Austin's best.",
+//   post_category: 'Lessons',
+//   post_images:
+//     'https://images.unsplash.com/photo-1543943475-e50600c4e81c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+//   post_price: '45',
+//   post_starting_date: new Date(),
+//   post_ending_date: date.setDate(date.getDate() + 365),
+//   post_max_guests: 1,
+//   post_booked_guests: 0,
+//   post_min_guests: 1,
+//   post_complete: false,
+// });
+
+//////////ADDING Users
+
+// db.users.create({
+//   user_first_name: 'Ben',
+//   user_last_name: 'Rest',
+//   user_email_address: 'benrest@getoutaustin.com',
+// });
 
 // console.log('Now looking for user...');
 // db.users
@@ -22,8 +50,8 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/api/v1", api);
-app.use("/dbwrite/v1", dbwrite);
+app.use('/api/v1', api);
+app.use('/dbwrite/v1', dbwrite);
 
 // app.get('/posts', (req, res) => {
 //   console.log('recieved post from client');
