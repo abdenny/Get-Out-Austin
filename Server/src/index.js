@@ -11,24 +11,24 @@ const app = express();
 app.use(cors());
 
 //////////ADDING POSTS
-const date = new Date();
-date.setDate(date.getDate() + 365);
+// const date = new Date();
+// date.setDate(date.getDate() + 365);
 
-db.posts.create({
-  post_author: 12,
-  post_title: 'Golf Lessons',
-  post_description: "Learn from Austin's best.",
-  post_category: 'Lessons',
-  post_images:
-    'https://images.unsplash.com/photo-1543943475-e50600c4e81c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-  post_price: '45',
-  post_starting_date: new Date(),
-  post_ending_date: date.setDate(date.getDate() + 365),
-  post_max_guests: 1,
-  post_booked_guests: 0,
-  post_min_guests: 1,
-  post_complete: false,
-});
+// db.posts.create({
+//   post_author: 12,
+//   post_title: 'Golf Lessons',
+//   post_description: "Learn from Austin's best.",
+//   post_category: 'Lessons',
+//   post_images:
+//     'https://images.unsplash.com/photo-1543943475-e50600c4e81c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+//   post_price: '45',
+//   post_starting_date: new Date(),
+//   post_ending_date: date.setDate(date.getDate() + 365),
+//   post_max_guests: 1,
+//   post_booked_guests: 0,
+//   post_min_guests: 1,
+//   post_complete: false,
+// });
 
 //////////ADDING Users
 
