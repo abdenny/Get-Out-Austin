@@ -1,11 +1,25 @@
 import { signInWithGoogle } from '../../src/firebase.utils';
 import React from 'react';
 import Button from '@material-ui/core/Button';
-
-const SignIn = () => {
+import { auth } from '../../src/firebase.utils';
+const SignIn = (props) => {
+  console.log(props);
   return (
     <>
-      <Button onClick={signInWithGoogle}>Sign In</Button>
+      {props.currentUser !== null ? (
+        <>
+          <div>Hello, {props.currentUser.displayName}!</div>
+          <Button
+            onClick={() => {
+              auth.signOut();
+            }}
+          >
+            Sign Out
+          </Button>
+        </>
+      ) : (
+        <Button onClick={signInWithGoogle}>Sign In</Button>
+      )}
     </>
   );
 };

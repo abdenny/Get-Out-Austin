@@ -12,12 +12,16 @@ import { auth } from '../src/firebase.utils';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  const [currentUser, setcurrentUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setcurrentUser(user);
+    const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      setUser(user);
     });
+
+    return () => {
+      unsubscribeFromAuth();
+    };
   }, []);
 
   React.useEffect(() => {
@@ -26,8 +30,7 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  console.log(currentUser);
-
+  console.log(user);
   return (
     <React.Fragment>
       <Head>
@@ -49,7 +52,7 @@ export default function MyApp(props) {
           <Typography variant='h6' color='inherit' noWrap>
             Get Out, Austin
           </Typography>
-          <SignIn />
+          <SignIn currentUser={user} />
         </Toolbar>
         {/* </AppBar> */}
         <Component {...pageProps} />

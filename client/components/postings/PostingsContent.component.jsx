@@ -1,7 +1,6 @@
 import React from 'react';
 import PostCard from './PostingsCards.component';
 import { Grid } from '@material-ui/core';
-import PostingsData from './PostingsData.component';
 
 const PostingsContent = (props) => {
   console.log(props.props.props.posts);
