@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -7,9 +7,18 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import theme from '../components/theme';
 import Typography from '@material-ui/core/Typography';
+import SignIn from '../components/user/SignIn.component';
+import { auth } from '../src/firebase.utils';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  const [currentUser, setcurrentUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setcurrentUser(user);
+    });
+  }, []);
 
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -17,6 +26,7 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+  console.log(currentUser);
 
   return (
     <React.Fragment>
@@ -39,6 +49,7 @@ export default function MyApp(props) {
           <Typography variant='h6' color='inherit' noWrap>
             Get Out, Austin
           </Typography>
+          <SignIn />
         </Toolbar>
         {/* </AppBar> */}
         <Component {...pageProps} />

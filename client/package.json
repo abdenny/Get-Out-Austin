@@ -7,6 +7,8 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
+    "firebase": "^7.14.2",
+    "firebaseui": "^4.5.0",
     "formik": "^2.1.4",
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-unfetch": "^3.0.0",
