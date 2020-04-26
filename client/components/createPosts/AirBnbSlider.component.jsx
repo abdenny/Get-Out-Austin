@@ -37,7 +37,7 @@ export default function RangeSlider(props) {
 
   const handleChangeIn = (event, newValue) => {
     setValue(newValue);
-    props.changeHandle.bind(null, "photos");
+    props.changeHandle.bind(null, "guest_range");
   };
 
   return (

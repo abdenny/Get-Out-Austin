@@ -7,6 +7,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import theme from "../components/theme";
 import Typography from "@material-ui/core/Typography";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

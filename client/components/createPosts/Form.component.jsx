@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AirBnbSlider from "./AirBnbSlider.component";
+import DatePicker from "./DatePicker.component";
 
 export const Form = (props) => {
   //Destructure props
@@ -87,7 +88,9 @@ export const Form = (props) => {
         <Grid item xs={12} sm={6}>
           <AirBnbSlider props={propForSlider} changeHandle={change} />
         </Grid>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={12}>
+          <DatePicker props={propForSlider} changeHandler={change} />
+        </Grid>
       </Grid>
       {/* Todo: add Form for Date */}
       <Button

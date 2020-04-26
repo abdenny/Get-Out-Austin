@@ -6,6 +6,7 @@
     "@babel/runtime": "^7.9.2",
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
+    "@types/react-dates": "^17.1.10",
     "clsx": "latest",
     "formik": "^2.1.4",
     "moment": "^2.24.0",
