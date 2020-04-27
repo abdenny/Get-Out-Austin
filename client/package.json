@@ -2,6 +2,7 @@
   "name": "client",
   "version": "4.0.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@babel/runtime": "^7.9.2",
     "@material-ui/core": "latest",
@@ -10,6 +11,8 @@
     "clsx": "latest",
     "formik": "^2.1.4",
     "moment": "^2.24.0",
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "latest",
     "prop-types": "latest",
     "react": "^16.13.1",

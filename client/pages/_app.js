@@ -37,8 +37,8 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         {/* <AppBar position='sticky'> */}
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
+        <Toolbar color='primary'>
+          <Typography variant='h6' color='inherit' noWrap>
             Get Out, Austin
           </Typography>
         </Toolbar>

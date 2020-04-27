@@ -8,9 +8,20 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ShareIcon from '@material-ui/icons/Share';
 import { Avatar, IconButton, CardMedia } from '@material-ui/core';
+import Link from 'next/link';
 
 const PostingCards = (props) => {
-  const { avatarUrl, title, subtitle, description, imageUrl } = props;
+  console.log(props);
+  const {
+    avatarUrl,
+    title,
+    subtitle,
+    description,
+    post_title,
+    id,
+    post_price,
+    post_images,
+  } = props;
   return (
     <Card>
       <CardHeader
@@ -20,18 +31,19 @@ const PostingCards = (props) => {
             <ShareIcon />
           </IconButton>
         }
-        title={title}
-        subheader={subtitle}
+        title={post_title}
+        subheader={`$${post_price}`}
       />
-      <CardMedia style={{ height: '150px' }} image={imageUrl} />
+      <CardMedia style={{ height: '150px' }} image={post_images} />
       <CardContent>
         <Typography variant='body2' component='p'>
           {description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small'>BUY NOW</Button>
-        <Button size='small'>OFFER</Button>
+        <Link href={`/posts/${id}`}>
+          <Button size='small'>View Posting</Button>
+        </Link>
       </CardActions>
     </Card>
   );
