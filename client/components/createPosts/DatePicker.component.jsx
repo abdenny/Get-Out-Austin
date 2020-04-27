@@ -12,13 +12,14 @@ class DatePicker extends Component {
     };
   }
   handleChangeIn = (newValue) => {
-    this.setState(newValue);
+    this.setState(newValue, () => {
+      this.props.props.setFieldValue("date_range", [
+        this.state.startDate,
+        this.state.endDate,
+      ]);
+    });
     console.log(newValue);
     this.props.changeHandler.bind(null, "date_range");
-    this.props.props.setFieldValue("date_range", [
-      this.state.startDate,
-      this.state.endDate,
-    ]);
   };
   render() {
     return (
@@ -33,6 +34,7 @@ class DatePicker extends Component {
           } // PropTypes.func.isRequired,
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={(focusedInput) => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+          withPortal={true}
         />
       </>
     );

@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Form } from "./Form.component";
 import Paper from "@material-ui/core/Paper";
 import validationSchema from "./yupValidation";
+import PostToast from "./PostToast.component";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const InputForm = (props) => {
   const classes = useStyles();
+  const [toastStatus, setValue] = React.useState({ status: false, data: 0 });
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -42,11 +44,26 @@ const InputForm = (props) => {
     },
   });
   const onSubmit = (data) => {
+    fetch("http://localhost:3001/dbwrite/v1/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then((result) => {
+        setValue({ status: true, data: result });
+        console.log(result);
+      });
     alert(JSON.stringify(data, null, 2));
   };
   return (
     <React.Fragment>
       <div className={classes.container}>
+        {toastStatus.status && <PostToast status={toastStatus.data} />}
         <Paper elevation={1} className={classes.paper}>
           <h1>Add a Posting</h1>
           <Formik
