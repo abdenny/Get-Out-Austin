@@ -9,13 +9,14 @@ const validationSchema = Yup.object({
     .required("Description is required"),
   category: Yup.string("Category").required("Category is required."),
   price: Yup.number("Enter a price.")
+    .min(1, "Price must be greater than 0.")
     .max(1000, "Price cannot exceed $1000.")
     .required("Please enter a price."),
-  guest_range: Yup.array()
-    .of(Yup.number())
-    .min(1)
-    .required("Please select a guest range."),
-  date_range: Yup.array().of(Yup.string("Date Range")).required(),
+  photos: Yup.string("Photo").required("A photo is required."),
+  // guest_range: Yup.array().of(Yup.number()).min(1),
+  // .required("Please select a guest range."),
+  // date_range: Yup.array().of(Yup.string("Date Range")),
+  // .required("A date range is required."),
 });
 
 export default validationSchema;

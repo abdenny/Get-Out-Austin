@@ -24,7 +24,18 @@ export const Form = (props) => {
     handleChange,
     isValid,
     setFieldTouched,
+    setFieldValue,
   } = props;
+  let propForDatePicker = {
+    date_range,
+    errors,
+    touched,
+    handleSubmit,
+    handleChange,
+    isValid,
+    setFieldTouched,
+    setFieldValue,
+  };
 
   const change = (name, e) => {
     e.persist();
@@ -75,6 +86,18 @@ export const Form = (props) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            id="price"
+            name="price"
+            helperText={touched.price ? errors.price : ""}
+            error={touched.price && Boolean(errors.price)}
+            label="Price"
+            fullWidth
+            value={price}
+            onChange={change.bind(null, "price")}
+          />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField
             id="photos"
             name="photos"
             label="Photos"
@@ -86,17 +109,17 @@ export const Form = (props) => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <AirBnbSlider props={propForSlider} changeHandle={change} />
+          <AirBnbSlider props={propForSlider} change={change} />
         </Grid>
         <Grid item xs={12}>
-          <DatePicker props={propForSlider} changeHandler={change} />
+          <DatePicker props={propForDatePicker} changeHandler={change} />
         </Grid>
       </Grid>
       {/* Todo: add Form for Date */}
       <Button
         type="submit"
         fullWidth
-        variant="raised"
+        variant="contained"
         color="primary"
         disabled={!isValid}
       >

@@ -31,13 +31,16 @@ export default function RangeSlider(props) {
     handleChange,
     isValid,
     setFieldTouched,
+    setFieldValue,
   } = props.props;
   const classes = useStyles();
   const [value1, setValue] = React.useState(guest_range);
 
   const handleChangeIn = (event, newValue) => {
     setValue(newValue);
-    props.changeHandle.bind(null, "guest_range");
+    // props.change.bind(null, "guest_range");
+    setFieldValue("guest_range", value1);
+    console.log(guest_range);
   };
 
   return (

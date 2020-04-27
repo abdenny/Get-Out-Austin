@@ -38,7 +38,7 @@ const InputForm = (props) => {
       photos: "",
       price: 0,
       guest_range: [1, 20],
-      date_range: ["start", "end"],
+      date_range: [null, null],
     },
   });
   const onSubmit = (data) => {
