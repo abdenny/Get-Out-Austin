@@ -30,7 +30,7 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  console.log(user);
+
   return (
     <React.Fragment>
       <Head>
