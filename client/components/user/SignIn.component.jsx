@@ -1,24 +1,28 @@
 import { signInWithGoogle } from '../../src/firebase.utils';
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { auth } from '../../src/firebase.utils';
-const SignIn = (props) => {
-  console.log(props);
+import UserContext from '../../src/context/userContext.context';
+const SignIn = () => {
+  const { userGlobal } = useContext(UserContext);
   return (
     <>
-      {props.currentUser !== null ? (
+      {userGlobal === null ? (
         <>
-          <div>Hello, {props.currentUser.displayName}!</div>
+          <Button onClick={signInWithGoogle}>Login</Button>
+        </>
+      ) : (
+        <>
           <Button
+            className='red'
             onClick={() => {
               auth.signOut();
             }}
           >
-            Sign Out
+            Logout
           </Button>
+          <h3>Hello, {userGlobal.displayName}</h3>
         </>
-      ) : (
-        <Button onClick={signInWithGoogle}>Sign In</Button>
       )}
     </>
   );
