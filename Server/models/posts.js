@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const posts = sequelize.define(
-    'posts',
+    "posts",
     {
-      post_author: DataTypes.INTEGER,
+      uid: DataTypes.STRING,
       post_title: DataTypes.STRING,
       post_description: DataTypes.STRING,
       post_category: DataTypes.STRING,
@@ -20,8 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   posts.associate = function (models) {
     // associations can be defined here
-    posts.belongsTo(models.users, { foreignKey: 'post_author' });
-    posts.hasMany(models.post_guests, { foreignKey: 'post_id' });
+    posts.hasMany(models.post_guests, { foreignKey: "post_id" });
   };
   return posts;
 };

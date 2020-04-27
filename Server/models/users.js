@@ -9,16 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  users.associate = function (models) {
-    users.hasMany(models.post_guests, {
-      foreignKey: "user_id",
-      onDelete: "Cascade",
-    });
-
-    users.hasMany(models.posts, {
-      foreignKey: "post_author",
-      onDelete: "Cascade",
-    });
-  };
+  users.associate = function (models) {};
   return users;
 };
