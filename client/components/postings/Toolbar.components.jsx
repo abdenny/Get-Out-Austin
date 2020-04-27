@@ -19,12 +19,14 @@ export default function PostToolBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <hr />
-      <Toolbar color='primary' position='sticky'>
-        <SelectsToolBar />
-      </Toolbar>
-      <hr />
-    </div>
+    <>
+      <div className={classes.root}>
+        <hr />
+        <Toolbar color='primary' position='sticky'>
+          <SelectsToolBar />
+        </Toolbar>
+        <hr />
+      </div>
+    </>
   );
 }
