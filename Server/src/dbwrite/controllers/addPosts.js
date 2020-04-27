@@ -1,8 +1,8 @@
-import db from "../../../models";
+import db from '../../../models';
 
 export function addPosts(req, res) {
-  //Need to get the post_author from the user firebase object, set to 1.
-  let post_author = 1;
+  //Need to get the uid from the user firebase object, set to 1.
+  let uid = req.body.uid;
   let post_title = req.body.title;
   let post_description = req.body.description;
   let post_category = req.body.category;
@@ -18,7 +18,7 @@ export function addPosts(req, res) {
   let createPost = () => {
     db.posts
       .create({
-        post_author,
+        uid,
         post_title,
         post_description,
         post_category,
@@ -36,26 +36,21 @@ export function addPosts(req, res) {
       })
       .catch((err) => {
         console.log(err);
-        res.send(JSON.stringify("Error: ", err));
+        res.send(JSON.stringify('Error: ', err));
       });
   };
 
   //Check if the posting is a duplicate (author has posting with same title)
-  db.posts
-    .findAll({ where: { post_author: post_author, post_title: post_title } })
-    .then((results) => {
-      console.log(results[0].post_title);
-      let notDuplicate = results[0].post_title === post_title ? false : true;
-      if (notDuplicate) {
-        console.log("...creating posting.");
-        createPost();
-      } else {
-        console.log("...duplicate found.");
-        res.send(
-          JSON.stringify(
-            "Sorry, the posting you added seems to be a duplicate."
-          )
-        );
-      }
-    });
+  db.posts.findAll({ where: { uid: uid } }).then((results) => {
+    let notDuplicate = results[0].post_title === post_title ? false : true;
+    if (notDuplicate) {
+      console.log('...creating posting.');
+      createPost();
+    } else {
+      console.log('...duplicate found.');
+      res.send(
+        JSON.stringify('Sorry, the posting you added seems to be a duplicate.')
+      );
+    }
+  });
 }
