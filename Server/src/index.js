@@ -1,10 +1,10 @@
-import 'dotenv/config';
-import cors from 'cors';
-import express from 'express';
-import db from '../models';
-import bodyParser from 'body-parser';
-import api from './api/api';
-import dbwrite from './dbwrite/dbwrite';
+import "dotenv/config";
+import cors from "cors";
+import express from "express";
+import db from "../models";
+import bodyParser from "body-parser";
+import api from "./api/api";
+import dbwrite from "./dbwrite/dbwrite";
 
 const app = express();
 
@@ -48,10 +48,14 @@ app.use(cors());
 //     console.log(results);
 //   });
 
+///// Deleting Posts
+
+// db.posts.destroy({ where: { id: 18 } });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/api/v1', api);
-app.use('/dbwrite/v1', dbwrite);
+app.use("/api/v1", api);
+app.use("/dbwrite/v1", dbwrite);
 
 // app.get('/posts', (req, res) => {
 //   console.log('recieved post from client');

@@ -12,7 +12,9 @@ const validationSchema = Yup.object({
     .min(1, "Price must be greater than 0.")
     .max(1000, "Price cannot exceed $1000.")
     .required("Please enter a price."),
-  photos: Yup.string("Photo").required("A photo is required."),
+  photos: Yup.string("Photo")
+    .required("A photo is required.")
+    .url("Photo link is not a valid URL."),
   // guest_range: Yup.array().of(Yup.number()).min(1),
   // .required("Please select a guest range."),
   // date_range: Yup.array().of(Yup.string("Date Range")),
