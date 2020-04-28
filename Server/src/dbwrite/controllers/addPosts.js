@@ -1,4 +1,4 @@
-import db from '../../../models';
+import db from "../../../models";
 
 export function addPosts(req, res) {
   //Need to get the uid from the user firebase object, set to 1.
@@ -36,20 +36,21 @@ export function addPosts(req, res) {
       })
       .catch((err) => {
         console.log(err);
-        res.send(JSON.stringify('Error: ', err));
+        res.send(JSON.stringify("Error: ", err));
       });
   };
 
   //Check if the posting is a duplicate (author has posting with same title)
   db.posts.findAll({ where: { uid: uid } }).then((results) => {
-    let notDuplicate = results[0].post_title === post_title ? false : true;
+    let notDuplicate = true;
+    // let notDuplicate = results[0].post_title === post_title ? false : true;
     if (notDuplicate) {
-      console.log('...creating posting.');
+      console.log("...creating posting.");
       createPost();
     } else {
-      console.log('...duplicate found.');
+      console.log("...duplicate found.");
       res.send(
-        JSON.stringify('Sorry, the posting you added seems to be a duplicate.')
+        JSON.stringify("Sorry, the posting you added seems to be a duplicate.")
       );
     }
   });
