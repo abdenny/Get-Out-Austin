@@ -42,7 +42,9 @@ const PostingCards = (props) => {
       </CardContent>
       <CardActions>
         <Link href={`/posts/${id}`}>
-          <Button size='small'>View Posting</Button>
+          <Button color='secondary' size='small'>
+            View Posting
+          </Button>
         </Link>
       </CardActions>
     </Card>
