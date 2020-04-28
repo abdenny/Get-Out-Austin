@@ -35,8 +35,8 @@ const Postings = (props) => {
             break;
           case "guests":
             if (
-              post[max_guests] - post[booked_guests] >
-              parseInt(searchParams.conditonsWanted[guests])
+              post.max_guests - post.booked_guests >
+              parseInt(searchParams.conditionsWanted.guests)
             ) {
               conditionsMet += 1;
               break;
