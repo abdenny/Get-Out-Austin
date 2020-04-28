@@ -17,7 +17,7 @@ const Postings = (props) => {
   let propsFilter;
   if (searchParams.wantSearch) {
     console.log("want search", searchParams.conditionsWanted);
-    propsFilter = props.props.posts.map((post) => {
+    propsFilter = props.props.posts.filter((post) => {
       let conditionsNeeded = Object.keys(searchParams.conditionsWanted).length;
       let conditionsMet = 0;
       console.log(conditionsNeeded, conditionsMet);
@@ -25,19 +25,21 @@ const Postings = (props) => {
         switch (key) {
           case "categories":
             if (
-              searchParams.conditonsWanted[categories].includes(
-                post[post_category]
+              searchParams.conditionsWanted.categories.includes(
+                post.post_category
               )
             ) {
               conditionsMet += 1;
+              break;
             }
             break;
-          case "guest":
+          case "guests":
             if (
               post[max_guests] - post[booked_guests] >
               parseInt(searchParams.conditonsWanted[guests])
             ) {
               conditionsMet += 1;
+              break;
             }
             break;
           case "max_price":
@@ -53,12 +55,15 @@ const Postings = (props) => {
             break;
           case "search":
             if (
-              post.post_title.includes(searchParams.conditionsWanted[search]) ||
-              post.post_description.includes(
-                searchParams.conditonsWanted.search
-              )
+              post.post_title
+                .toLowerCase()
+                .includes(searchParams.conditionsWanted.search.toLowerCase()) ||
+              post.post_description
+                .toLowerCase()
+                .includes(searchParams.conditionsWanted.search.toLowerCase())
             ) {
               conditionsMet += 1;
+              break;
             }
             break;
 
@@ -68,7 +73,7 @@ const Postings = (props) => {
         }
       }
       console.log(conditionsNeeded, conditionsMet);
-      return post;
+      return conditionsNeeded === conditionsMet;
     });
     console.log(propsFilter);
   }
