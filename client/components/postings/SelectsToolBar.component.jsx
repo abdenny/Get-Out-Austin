@@ -1,14 +1,17 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import React from "react";
+import clsx from "clsx";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import ListItemText from "@material-ui/core/ListItemText";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import Chip from "@material-ui/core/Chip";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -17,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 300,
   },
   chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
   },
   chip: {
     margin: 2,
@@ -39,7 +42,20 @@ const MenuProps = {
   },
 };
 
-const names = ['Hiking', 'Fishing', 'Camping', 'Biking'];
+const names = [
+  "River",
+  "Hiking",
+  "Camping",
+  "Adventure",
+  "Animals",
+  "Downtown",
+  "Museum",
+  "Vehicles",
+  "Festivals",
+  "Shows",
+  "Lessons",
+  "Other",
+];
 
 function getStyles(name, personName, theme) {
   return {
@@ -50,130 +66,115 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function SelectsToolBar() {
+export default function SelectsToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
 
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
+  const updateField = (e) => {
+    console.log(e.target.name, e.target.value);
+    console.log(props.searchParams);
+    setPersonName(e.target.value);
+    props.setSearch({
+      ...props.searchParams,
+      [e.target.name]: e.target.value,
+      wantSearch: true,
+      conditionsWanted: {
+        ...props.searchParams.conditionsWanted,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
-  const handleChangeMultiple = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setPersonName(value);
-  };
+  // const handleChangeMultiple = (event) => {
+  //   const { options } = event.target;
+  //   const value = [];
+  //   for (let i = 0, l = options.length; i < l; i += 1) {
+  //     if (options[i].selected) {
+  //       value.push(options[i].value);
+  //     }
+  //   }
+  //   // setPersonName(value);
+  // };
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id='demo-mutiple-name-label'>Name</InputLabel>
-        <Select
-          labelId='demo-mutiple-name-label'
-          id='demo-mutiple-name'
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel id='demo-mutiple-checkbox-label'>Tag</InputLabel>
-        <Select
-          labelId='demo-mutiple-checkbox-label'
-          id='demo-mutiple-checkbox'
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel id='demo-mutiple-chip-label'>Chip</InputLabel>
-        <Select
-          labelId='demo-mutiple-chip-label'
-          id='demo-mutiple-chip'
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input id='select-multiple-chip' />}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} className={classes.chip} />
-              ))}
-            </div>
-          )}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl className={clsx(classes.formControl, classes.noLabel)}>
-        <Select
-          multiple
-          displayEmpty
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Placeholder</em>;
-            }
-
-            return selected.join(', ');
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem disabled value=''>
-            <em>Placeholder</em>
-          </MenuItem>
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <form>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-mutiple-checkbox-label">Categories</InputLabel>
+          <Select
+            labelId="demo-mutiple-checkbox-label"
+            id="demo-mutiple-checkbox"
+            name="categories"
+            multiple
+            onChange={updateField}
+            value={props.searchParams.categories}
+            input={<Input />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={personName.includes(name)} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <TextField
+            id="standard-number"
+            label="Guests"
+            name="guests"
+            type="number"
+            value={props.searchParams.guests}
+            onChange={updateField}
+            // InputLabelProps={{
+            //   shrink: true,
+            // }}
+          />
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          {/* <InputLabel htmlFor="soutlined-adornment-amount">Amount</InputLabel> */}
+          <TextField
+            id="standard-number"
+            label="Max Price"
+            type="number"
+            name="max_price"
+            value={props.searchParams.max_price}
+            onChange={updateField}
+            InputProps={{
+              endAdornment: <InputAdornment position="start">$</InputAdornment>,
+            }}
+            // InputLabelProps={{
+            //   shrink: true,
+            // }}
+          />
+          {/* <Input
+            id="standard-adornment-amount"
+            label="Amount"
+            // value={values.amount}
+            // onChange={handleChange('amount')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          /> */}
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <TextField
+            id="input-with-icon-adornment"
+            label="Search"
+            name="search"
+            value={props.searchParams.search}
+            onChange={updateField}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
+      </form>
     </div>
   );
 }
