@@ -12,6 +12,7 @@ import { auth } from '../src/firebase.utils';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import UserContext from '../src/context/userContext.context';
+import Link from 'next/link';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
