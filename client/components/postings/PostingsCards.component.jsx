@@ -21,7 +21,24 @@ const PostingCards = (props) => {
     id,
     post_price,
     post_images,
+    post_booked_guests,
+    post_max_guests,
+    post_ending_date,
   } = props;
+  let checkValid;
+  let checkValidText;
+  function isDateBeforeToday(date) {
+    return new Date(date).valueOf() < new Date().valueOf();
+  }
+  if (post_booked_guests === post_max_guests) {
+    checkValid = false;
+    checkValidText = "This post is fully booked!";
+  } else if (isDateBeforeToday(post_ending_date)) {
+    checkValid = false;
+    checkValidText = "This post has expired.";
+  } else {
+    checkValid = true;
+  }
   return (
     <Card>
       <CardHeader
@@ -41,13 +58,15 @@ const PostingCards = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href={`/posts/${id}`}>
-
-          <Button color='secondary' size='small'>
-            View Posting
-          </Button>
-
-        </Link>
+        {checkValid ? (
+          <Link href={`/posts/${id}`}>
+            <Button color="secondary" size="small">
+              View Posting
+            </Button>
+          </Link>
+        ) : (
+          <Typography variant="body2">{checkValidText}</Typography>
+        )}
       </CardActions>
     </Card>
   );

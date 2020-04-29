@@ -10,6 +10,9 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import PostingsMap from "../../components/map/PostingsMap.component";
 import StripeButton from "../../components/stripe/stripe-button.component";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,6 +80,23 @@ export default (props) => {
   const router = useRouter();
   console.log(props);
   const [postData, setData] = useState([]);
+  const [guest_amount, setGuests] = React.useState(1);
+  const [shouldComponentBeDisabled, enableStripe] = React.useState(true);
+
+  let guestSelector = [];
+
+  for (
+    let i = 0;
+    i <= postData.post_max_guests - postData.post_booked_guests;
+    i++
+  ) {
+    guestSelector.push({ guestText: i });
+  }
+
+  const handleChange = (event) => {
+    setGuests(event.target.value);
+    enableStripe(false);
+  };
 
   useEffect(() => {
     if (router) {
@@ -128,9 +148,31 @@ export default (props) => {
               <Typography component="h3" variant="body1">
                 ${postData.post_price}
               </Typography>
+              <InputLabel variant="body1" id="demo-simple-select-label">
+                Number of Guests
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={guest_amount}
+                onClick={handleChange}
+              >
+                {guestSelector.map((selector) => {
+                  return (
+                    <MenuItem value={selector.guestText}>
+                      {selector.guestText}
+                    </MenuItem>
+                  );
+                })}
+                {/* <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem> */}
+              </Select>
               <StripeButton
                 post_price={postData.post_price}
                 post_id={postData.id}
+                post_guests={guest_amount}
+                disabled={shouldComponentBeDisabled}
               />
               <Grid container>
                 <Grid item xs>
