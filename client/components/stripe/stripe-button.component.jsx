@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-
-const StripeCheckoutButton = ({ post_price }) => {
+import UserContext from '../../src/context/userContext.context';
+const StripeCheckoutButton = ({ post_price, post_id }) => {
+  const { userGlobal } = useContext(UserContext);
   const priceForStripe = post_price * 100;
   const publishableKey = 'pk_test_rs6ShmyUDyefKyUmvFkOcvk800QtJrAhp9';
 
   const onToken = (token) => {
+    token = {
+      ...token,
+      uid: userGlobal.uid,
+      post_id: post_id,
+      quest_count: 2,
+      paid: true,
+    };
     console.log(token);
+    fetch('http://localhost:3001/dbwrite/v1/posts/guests', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(token),
+    }).then((result) => {
+      return result.json();
+    });
+
     alert('Payment Succesful!');
   };
 
