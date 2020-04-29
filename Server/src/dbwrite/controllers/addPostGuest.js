@@ -1,8 +1,8 @@
-import db from "../../../models";
+import db from '../../../models';
 
 export function addPostGuest(req, res) {
   let post_id = req.body.post_id;
-  let user_id = req.body.user_id;
+  let uid = req.body.uid;
   let guest_count = req.body.guest_count;
   let paid = req.body.paid;
 
@@ -29,7 +29,7 @@ export function addPostGuest(req, res) {
     db.post_guests
       .create({
         post_id,
-        user_id,
+        uid,
         guest_count,
         paid,
       })
@@ -38,7 +38,7 @@ export function addPostGuest(req, res) {
       })
       .catch((err) => {
         console.log(err);
-        JSON.stringify("Error found: ", err);
+        JSON.stringify('Error found: ', err);
       });
   };
 }

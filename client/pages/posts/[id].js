@@ -110,7 +110,10 @@ export default (props) => {
               >
                 Purchase
               </Button>
-              <StripeButton post_price={postData.post_price} />
+              <StripeButton
+                post_price={postData.post_price}
+                post_id={postData.id}
+              />
               <Grid container>
                 <Grid item xs>
                   <Link href='#' variant='body2'>
