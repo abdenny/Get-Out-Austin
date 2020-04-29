@@ -1,11 +1,10 @@
 import React from 'react';
-import UsersPostings from '../components/user/UsersPostings.component';
-import UsersClaimedPostings from '../components/user/UsersClaimedPostings.component';
+import UsersPostingsContainer from '../components/user/UsersPostingsContainer.component';
+
 const user = (props) => {
   return (
     <>
-      <UsersPostings props={props} />
-      <UsersClaimedPostings props={props.postGuests} />
+      <UsersPostingsContainer props={props} />
     </>
   );
 };
