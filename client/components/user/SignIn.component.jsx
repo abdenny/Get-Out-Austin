@@ -10,13 +10,25 @@ const SignIn = () => {
   return (
     <>
       {userGlobal === null ? (
-        <>
+        <div
+          style={{
+            position: 'absolute',
+            right: '16px',
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
           <Button onClick={signInWithGoogle}>Login</Button>
-        </>
+        </div>
       ) : (
-        <>
-          <Avatar alt='User Image' src={userGlobal.photoURL} />
-          <h3>Hello, {userGlobal.displayName}</h3>
+        <div
+          style={{
+            position: 'absolute',
+            right: '16px',
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
           <Link href='/user'>
             <Button>Account</Button>
           </Link>
@@ -27,7 +39,9 @@ const SignIn = () => {
           >
             Logout
           </Button>
-        </>
+          {/* <h3>Hello, {userGlobal.displayName}</h3> */}
+          <Avatar alt='User Image' src={userGlobal.photoURL} />
+        </div>
       )}
     </>
   );

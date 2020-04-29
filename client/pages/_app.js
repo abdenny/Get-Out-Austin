@@ -54,10 +54,14 @@ export default function MyApp(props) {
         {/* <AppBar position='sticky'> */}
         <UserContext.Provider value={{ userGlobal: user }}>
           <Toolbar color='primary'>
-            <Typography variant='h6' color='inherit' noWrap>
-              Get Out, Austin
-            </Typography>
-            <SignIn currentUser={user} />
+            <Link href='/'>
+              <div style={{ cursor: 'pointer' }}>
+                <Typography variant='h6' color='inherit' noWrap>
+                  Get Out, Austin
+                </Typography>
+              </div>
+            </Link>
+            <SignIn currentUser={user}></SignIn>
           </Toolbar>
         </UserContext.Provider>
         {/* </AppBar> */}

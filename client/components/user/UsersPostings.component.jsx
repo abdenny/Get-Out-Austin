@@ -16,7 +16,7 @@ let UsersPostings = (props) => {
 
   let postToAdd = () => {
     if (userGlobal) {
-      let mappedPosts = props.props.props.posts.map((post) => {
+      let mappedPosts = props.props.props.posts.filter((post) => {
         if (post.uid === userGlobal.uid) {
           return post;
         }

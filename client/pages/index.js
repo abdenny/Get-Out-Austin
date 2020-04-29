@@ -113,7 +113,7 @@ export default function Index(props) {
                   </CardContent>
                   <CardActions>
                     <Link href={`/posts/${card.id}`}>
-                      <Button size='small' color='primary'>
+                      <Button size='small' color='secondary'>
                         View
                       </Button>
                     </Link>
