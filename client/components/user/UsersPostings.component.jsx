@@ -16,7 +16,7 @@ let UsersPostings = (props) => {
 
   let postToAdd = () => {
     if (userGlobal) {
-      let mappedPosts = props.props.posts.map((post) => {
+      let mappedPosts = props.props.props.posts.map((post) => {
         if (post.uid === userGlobal.uid) {
           return post;
         }
@@ -28,7 +28,7 @@ let UsersPostings = (props) => {
 
   return (
     <>
-      <h1>Users Postings</h1>
+      <h1>Your Postings</h1>
       <span>{JSON.stringify(postData)}</span>
     </>
   );

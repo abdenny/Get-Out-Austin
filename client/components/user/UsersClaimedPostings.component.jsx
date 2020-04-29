@@ -28,7 +28,7 @@ let UsersClaimedPostings = (props) => {
 
   return (
     <>
-      <h1>Users Postings</h1>
+      <h1>Postings Attending</h1>
       <span>{JSON.stringify(postData)}</span>
     </>
   );
