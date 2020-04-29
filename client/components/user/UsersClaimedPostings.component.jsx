@@ -16,7 +16,7 @@ let UsersClaimedPostings = (props) => {
 
   let postToAdd = () => {
     if (userGlobal) {
-      let mappedPosts = props.props.map((post) => {
+      let mappedPosts = props.props.filter((post) => {
         if (post.uid === userGlobal.uid) {
           return post;
         }
