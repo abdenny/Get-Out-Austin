@@ -10,7 +10,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StripeCheckoutButton = ({ post_price, post_id }) => {
+const StripeCheckoutButton = ({
+  post_price,
+  post_id,
+  post_guests,
+  disabled,
+}) => {
   const classes = useStyles();
   const { userGlobal } = useContext(UserContext);
   const priceForStripe = post_price * 100;
@@ -21,7 +26,7 @@ const StripeCheckoutButton = ({ post_price, post_id }) => {
       ...token,
       uid: userGlobal.uid,
       post_id: post_id,
-      quest_count: 2,
+      quest_count: post_guests,
       paid: true,
     };
     console.log(token);
@@ -53,11 +58,12 @@ const StripeCheckoutButton = ({ post_price, post_id }) => {
       stripeKey={publishableKey}
     >
       <Button
+        className={classes.submit}
         type="submit"
         fullWidth
         variant="contained"
         color="primary"
-        className={classes.submit}
+        disabled={disabled}
       >
         Purchase
       </Button>
