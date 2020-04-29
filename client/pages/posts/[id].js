@@ -148,14 +148,14 @@ export default (props) => {
               <Typography component="h3" variant="body1">
                 ${postData.post_price}
               </Typography>
-              <InputLabel id="demo-simple-select-label">
+              <InputLabel variant="body1" id="demo-simple-select-label">
                 Number of Guests
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={guest_amount}
-                onChange={handleChange}
+                onClick={handleChange}
               >
                 {guestSelector.map((selector) => {
                   return (
