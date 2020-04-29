@@ -28,7 +28,7 @@ const PostingCards = (props) => {
   let checkValid;
   let checkValidText;
   function isDateBeforeToday(date) {
-    return date < new Date(new Date().toDateString());
+    return new Date(date).valueOf() < new Date().valueOf();
   }
   if (post_booked_guests === post_max_guests) {
     checkValid = false;
