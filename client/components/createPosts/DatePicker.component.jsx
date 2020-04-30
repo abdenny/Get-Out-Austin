@@ -1,7 +1,7 @@
-import React from "react";
-import { DateRangePicker } from "react-dates";
+import React from 'react';
+import { DateRangePicker } from 'react-dates';
 
-import { Component } from "react";
+import { Component } from 'react';
 
 class DatePicker extends Component {
   constructor(props) {
@@ -13,22 +13,21 @@ class DatePicker extends Component {
   }
   handleChangeIn = (newValue) => {
     this.setState(newValue, () => {
-      this.props.props.setFieldValue("date_range", [
+      this.props.props.setFieldValue('date_range', [
         this.state.startDate,
         this.state.endDate,
       ]);
     });
-    console.log(newValue);
-    this.props.changeHandler.bind(null, "date_range");
+    this.props.changeHandler.bind(null, 'date_range');
   };
   render() {
     return (
       <>
         <DateRangePicker
           startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+          startDateId='your_unique_start_date_id' // PropTypes.string.isRequired,
           endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+          endDateId='your_unique_end_date_id' // PropTypes.string.isRequired,
           onDatesChange={({ startDate, endDate }) =>
             this.handleChangeIn({ startDate, endDate })
           } // PropTypes.func.isRequired,

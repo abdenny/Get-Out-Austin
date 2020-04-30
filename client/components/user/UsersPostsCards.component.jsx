@@ -45,16 +45,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function UsersPostsCards(props) {
   const classes = useStyles();
-  //   let filteredItems = [];
-  //   for (let index = 0; index <= 8; index++) {
-  //     filteredItems.push(props.posts[index]);
-  //   }
+
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
         <Container className={classes.cardGrid} maxWidth='md'>
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {props.filteredItems.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>

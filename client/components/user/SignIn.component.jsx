@@ -48,7 +48,6 @@ const SignIn = () => {
           >
             Logout
           </Button>
-          {/* <h3>Hello, {userGlobal.displayName}</h3> */}
           <Avatar alt='User Image' src={userGlobal.photoURL} />
         </div>
       )}

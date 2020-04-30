@@ -1,19 +1,18 @@
-import React from "react";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import ListItemText from "@material-ui/core/ListItemText";
-import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
-import Chip from "@material-ui/core/Chip";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import SearchIcon from "@material-ui/icons/Search";
-import RefreshIcon from "@material-ui/icons/Refresh";
-import { IconButton } from "@material-ui/core";
+import React from 'react';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import ListItemText from '@material-ui/core/ListItemText';
+import Select from '@material-ui/core/Select';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import { IconButton } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -27,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   chips: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   chip: {
     margin: 2,
@@ -50,18 +49,18 @@ const MenuProps = {
 };
 
 const names = [
-  "River",
-  "Hiking",
-  "Camping",
-  "Adventure",
-  "Animals",
-  "Downtown",
-  "Museum",
-  "Vehicles",
-  "Festivals",
-  "Shows",
-  "Lessons",
-  "Other",
+  'River',
+  'Hiking',
+  'Camping',
+  'Adventure',
+  'Animals',
+  'Downtown',
+  'Museum',
+  'Vehicles',
+  'Festivals',
+  'Shows',
+  'Lessons',
+  'Other',
 ];
 
 function getStyles(name, personName, theme) {
@@ -79,8 +78,6 @@ export default function SelectsToolBar(props) {
   const [personName, setPersonName] = React.useState([]);
 
   const updateField = (e) => {
-    console.log(e.target.name, e.target.value);
-    console.log(props.searchParams);
     setPersonName(e.target.value);
     props.setSearch({
       ...props.searchParams,
@@ -93,17 +90,6 @@ export default function SelectsToolBar(props) {
     });
   };
 
-  // const handleChangeMultiple = (event) => {
-  //   const { options } = event.target;
-  //   const value = [];
-  //   for (let i = 0, l = options.length; i < l; i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   // setPersonName(value);
-  // };
-
   return (
     <div>
       <form>
@@ -111,16 +97,16 @@ export default function SelectsToolBar(props) {
           <RefreshIcon />
         </IconButton>
         <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-checkbox-label">Categories</InputLabel>
+          <InputLabel id='demo-mutiple-checkbox-label'>Categories</InputLabel>
           <Select
-            labelId="demo-mutiple-checkbox-label"
-            id="demo-mutiple-checkbox"
-            name="categories"
+            labelId='demo-mutiple-checkbox-label'
+            id='demo-mutiple-checkbox'
+            name='categories'
             multiple
             onChange={updateField}
             value={props.searchParams.categories}
             input={<Input />}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
           >
             {names.map((name) => (
@@ -133,46 +119,32 @@ export default function SelectsToolBar(props) {
         </FormControl>
         <FormControl className={classes.formControl}>
           <TextField
-            id="standard-number"
-            label="Guests"
-            name="guests"
-            type="number"
+            id='standard-number'
+            label='Guests'
+            name='guests'
+            type='number'
             value={props.searchParams.guests}
             onChange={updateField}
-            // InputLabelProps={{
-            //   shrink: true,
-            // }}
           />
         </FormControl>
         <FormControl className={classes.formControl}>
-          {/* <InputLabel htmlFor="soutlined-adornment-amount">Amount</InputLabel> */}
           <TextField
-            id="standard-number"
-            label="Max Price"
-            type="number"
-            name="max_price"
+            id='standard-number'
+            label='Max Price'
+            type='number'
+            name='max_price'
             value={props.searchParams.max_price}
             onChange={updateField}
             InputProps={{
-              endAdornment: <InputAdornment position="start">$</InputAdornment>,
+              endAdornment: <InputAdornment position='start'>$</InputAdornment>,
             }}
-            // InputLabelProps={{
-            //   shrink: true,
-            // }}
           />
-          {/* <Input
-            id="standard-adornment-amount"
-            label="Amount"
-            // value={values.amount}
-            // onChange={handleChange('amount')}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          /> */}
         </FormControl>
         <FormControl className={classes.formControl}>
           <TextField
-            id="input-with-icon-adornment"
-            label="Search"
-            name="search"
+            id='input-with-icon-adornment'
+            label='Search'
+            name='search'
             value={props.searchParams.search}
             onChange={updateField}
             InputProps={{
