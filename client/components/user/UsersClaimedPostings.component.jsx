@@ -40,7 +40,7 @@ let UsersClaimedPostings = (props) => {
 
   return (
     <>
-      <h2>Postings Attending</h2>
+      <h2>Posts Attending</h2>
       {postData.length > 0 ? (
         <UsersPostsCards filteredItems={postData} />
       ) : (
