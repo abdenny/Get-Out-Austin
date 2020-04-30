@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import UserContext from '../../src/context/userContext.context';
+import UsersPostsCards from './UsersPostsCards.component';
 
 let UsersPostings = (props) => {
   const router = useRouter();
@@ -30,7 +31,8 @@ let UsersPostings = (props) => {
     <>
       <h1>Your Postings</h1>
       {postData.length > 0 ? (
-        <span>{JSON.stringify(postData)}</span>
+        // <span>{JSON.stringify(postData)}</span>
+        <UsersPostsCards filteredItems={postData} />
       ) : (
         <span> You have no posts</span>
       )}
