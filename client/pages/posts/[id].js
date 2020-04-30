@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import UserContext from "../../src/context/userContext.context";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -13,6 +14,7 @@ import StripeButton from "../../components/stripe/stripe-button.component";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,11 +34,13 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     margin: theme.spacing(6, 4),
+    marginTop: 0,
     padding: 20,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    textAlign: "center",
     width: "100",
   },
   img: {
@@ -73,6 +77,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
     marginTop: theme.spacing(1),
   },
+  alert: {
+    marginTop: 0,
+    paddingTop: 0,
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 export default (props) => {
@@ -80,8 +89,12 @@ export default (props) => {
   const router = useRouter();
   console.log(props);
   const [postData, setData] = useState([]);
-  const [guest_amount, setGuests] = React.useState(1);
-  const [shouldComponentBeDisabled, enableStripe] = React.useState(true);
+  const [guest_amount, setGuests] = useState(1);
+  const [shouldComponentBeDisabled, enableStripe] = useState(true);
+  const [isPostingPurchased, setPostingPurchased] = useState(false);
+  const [postGuestData, setGuestData] = useState([]);
+
+  const { userGlobal } = useContext(UserContext);
 
   let guestSelector = [];
 
@@ -104,16 +117,33 @@ export default (props) => {
     if (router) {
       findPost();
     }
-  }, []);
+  }, [userGlobal]);
 
   let findPost = () => {
-    props.posts.forEach((post) => {
-      console.log(post.id);
-      if (post.id == router.query.id) {
-        setData(post);
-      }
-    });
+    if (userGlobal) {
+      props.posts.forEach((post) => {
+        console.log(post.id);
+        if (post.id == router.query.id) {
+          setData(post);
+        }
+      });
+      props.post_guests.forEach((post_guest) => {
+        if (
+          post_guest.post_id == router.query.id &&
+          post_guest.uid === userGlobal.uid
+        ) {
+          setPostingPurchased(true);
+          setGuestData(post_guest);
+        }
+      });
+    }
   };
+
+  // let findIfBooked = () => {
+  //   props.post_guest.forEach((post_guest)=> {
+  //     if (post_guest.uid === )
+  //   })
+  // }
 
   return (
     <>
@@ -127,6 +157,16 @@ export default (props) => {
         </Grid>
         <Grid item xs={12} sm={6} md={7} component={Paper} elevation={6} square>
           <div className={classes.paper}>
+            {isPostingPurchased && (
+              <Alert
+                className={classes.alert}
+                variant="outlined"
+                severity="success"
+              >
+                You purchased this activity on{" "}
+                {new Date(postGuestData.createdAt).toDateString()}.
+              </Alert>
+            )}
             <Typography variant="h3">{postData.post_title}</Typography>
             <div className={classes.form} noValidate>
               <img className={classes.img} src={postData.post_images}></img>
@@ -206,12 +246,15 @@ export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   const res = await fetch("http://localhost:3001/api/v1/posts");
   const posts = await res.json();
+  const res2 = await fetch("http://localhost:3001/api/v1/posts/guests");
+  const post_guests = await res2.json();
 
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
       posts,
+      post_guests,
     },
   };
 }
