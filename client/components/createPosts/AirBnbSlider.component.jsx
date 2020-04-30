@@ -1,7 +1,7 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles({
   root: {
@@ -38,25 +38,23 @@ export default function RangeSlider(props) {
 
   const handleChangeIn = (event, newValue) => {
     setValue(newValue);
-    // props.change.bind(null, "guest_range");
-    setFieldValue("guest_range", value1);
-    console.log(guest_range);
+    setFieldValue('guest_range', value1);
   };
 
   return (
     <div className={classes.root}>
-      <Typography id="range-slider" gutterBottom>
+      <Typography id='range-slider' gutterBottom>
         Guest Range
       </Typography>
       <Slider
-        id="guest_range"
-        name="guest_range"
+        id='guest_range'
+        name='guest_range'
         value={value1}
-        helperText={touched.guest_range ? errors.guest_range : ""}
+        helperText={touched.guest_range ? errors.guest_range : ''}
         error={touched.guest_range && Boolean(errors.guest_range)}
         onChange={handleChangeIn}
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
+        valueLabelDisplay='auto'
+        aria-labelledby='range-slider'
         getAriaValueText={valuetext}
         min={1}
         max={50}

@@ -5,7 +5,6 @@ import UsersPostsCards from './UsersPostsCards.component';
 
 let UsersPostings = (props) => {
   const router = useRouter();
-  console.log(props);
   const [postData, setData] = useState([]);
   const { userGlobal } = useContext(UserContext);
 
@@ -22,16 +21,14 @@ let UsersPostings = (props) => {
           return post;
         }
       });
-      console.log(mappedPosts);
       setData(mappedPosts);
     }
   };
 
   return (
     <>
-      <h1>Your Postings</h1>
+      <h2>Your Postings</h2>
       {postData.length > 0 ? (
-        // <span>{JSON.stringify(postData)}</span>
         <UsersPostsCards filteredItems={postData} />
       ) : (
         <span> You have no posts</span>

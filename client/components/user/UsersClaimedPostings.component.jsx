@@ -5,7 +5,6 @@ import UsersPostsCards from './UsersPostsCards.component';
 
 let UsersClaimedPostings = (props) => {
   const router = useRouter();
-  console.log(props);
   const [postData, setData] = useState([]);
   const { userGlobal } = useContext(UserContext);
 
@@ -41,9 +40,8 @@ let UsersClaimedPostings = (props) => {
 
   return (
     <>
-      <h1>Postings Attending</h1>
+      <h2>Postings Attending</h2>
       {postData.length > 0 ? (
-        // <span>{JSON.stringify(postData)}</span>
         <UsersPostsCards filteredItems={postData} />
       ) : (
         <span> You are attending no posts</span>
