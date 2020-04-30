@@ -14,6 +14,19 @@ const Postings = (props) => {
     conditionsWanted: {},
   });
   console.log(props.props.posts);
+
+  const resetSearch = () => {
+    setValue({
+      ...searchParams,
+      categories: [],
+      guests: 1,
+      max_price: 20,
+      search: "",
+      wantSearch: false,
+      conditionsWanted: {},
+    });
+  };
+
   let propsFilter;
   if (searchParams.wantSearch) {
     console.log("want search", searchParams.conditionsWanted);
@@ -31,13 +44,19 @@ const Postings = (props) => {
             ) {
               conditionsMet += 1;
               break;
+            } else if (searchParams.conditionsWanted.categories.length < 1) {
+              conditionsMet += 1;
+              break;
             }
             break;
           case "guests":
             if (
-              post.max_guests - post.booked_guests >
+              post.post_max_guests - post.post_booked_guests >
               parseInt(searchParams.conditionsWanted.guests)
             ) {
+              conditionsMet += 1;
+              break;
+            } else if (searchParams.conditionsWanted.guests === "") {
               conditionsMet += 1;
               break;
             }
@@ -49,6 +68,9 @@ const Postings = (props) => {
             ) {
               conditionsMet += 1;
               console.log("max price met", conditionsMet);
+              break;
+            } else if (searchParams.conditionsWanted.max_price === "") {
+              conditionsMet += 1;
               break;
             }
             console.log("max price not met");
@@ -78,12 +100,15 @@ const Postings = (props) => {
     console.log(propsFilter);
   }
 
-  console.log(props.props.posts);
   return (
     <Grid container direction="column">
       <Grid item container>
         <Grid item xs={12} sm={12} md={12}>
-          <PostToolBar searchParams={searchParams} setSearch={setValue} />
+          <PostToolBar
+            searchParams={searchParams}
+            setSearch={setValue}
+            resetSearch={resetSearch}
+          />
         </Grid>
         <Grid
           item
