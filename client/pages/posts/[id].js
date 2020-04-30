@@ -95,7 +95,9 @@ export default (props) => {
 
   const handleChange = (event) => {
     setGuests(event.target.value);
-    enableStripe(false);
+    if (event.target.value > 0) {
+      enableStripe(false);
+    }
   };
 
   useEffect(() => {

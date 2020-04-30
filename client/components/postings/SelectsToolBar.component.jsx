@@ -12,12 +12,19 @@ import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
+import RefreshIcon from "@material-ui/icons/Refresh";
+import { IconButton } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    maxWidth: 300,
+    maxWidth: 150,
+  },
+  resetButton: {
+    margin: theme.spacing(1),
+    marginLeft: 0,
+    marginTop: theme.spacing(2),
   },
   chips: {
     display: "flex",
@@ -100,6 +107,9 @@ export default function SelectsToolBar(props) {
   return (
     <div>
       <form>
+        <IconButton className={classes.resetButton} onClick={props.resetSearch}>
+          <RefreshIcon />
+        </IconButton>
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-mutiple-checkbox-label">Categories</InputLabel>
           <Select

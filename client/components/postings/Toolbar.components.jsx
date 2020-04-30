@@ -26,6 +26,7 @@ export default function PostToolBar(props) {
           <SelectsToolBar
             searchParams={props.searchParams}
             setSearch={props.setSearch}
+            resetSearch={props.resetSearch}
           />
         </Toolbar>
         <hr />
