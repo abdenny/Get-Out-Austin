@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import UserContext from '../../src/context/userContext.context';
+import UsersPostsCards from './UsersPostsCards.component';
 
 let UsersClaimedPostings = (props) => {
   const router = useRouter();
@@ -42,9 +43,10 @@ let UsersClaimedPostings = (props) => {
     <>
       <h1>Postings Attending</h1>
       {postData.length > 0 ? (
-        <span>{JSON.stringify(postData)}</span>
+        // <span>{JSON.stringify(postData)}</span>
+        <UsersPostsCards filteredItems={postData} />
       ) : (
-        <span> You are attending posts</span>
+        <span> You are attending no posts</span>
       )}
     </>
   );

@@ -43,60 +43,20 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
 }));
-
-export default function Index(props) {
+export default function UsersPostsCards(props) {
   const classes = useStyles();
-  let filteredItems = [];
-  for (let index = 0; index <= 8; index++) {
-    filteredItems.push(props.posts[index]);
-  }
+  //   let filteredItems = [];
+  //   for (let index = 0; index <= 8; index++) {
+  //     filteredItems.push(props.posts[index]);
+  //   }
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth='sm'>
-            <Typography
-              component='h1'
-              variant='h2'
-              align='center'
-              color='textPrimary'
-              gutterBottom
-            >
-              Get Out, Austin
-            </Typography>
-            <Typography
-              variant='h5'
-              align='center'
-              color='textSecondary'
-              paragraph
-            >
-              Designed to connect adventure seekers. Outdoor lovers all around
-              Austin can find their next party, event, or excursion.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
-                <Grid item>
-                  <Link href='/posts'>
-                    <Button variant='contained' color='primary'>
-                      View Postings
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Button variant='outlined' color='primary'>
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
         <Container className={classes.cardGrid} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {filteredItems.map((card, index) => (
+            {props.filteredItems.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card key={index} className={classes.card}>
                   <CardMedia
@@ -125,18 +85,4 @@ export default function Index(props) {
       </main>
     </React.Fragment>
   );
-}
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  const res = await fetch('http://localhost:3001/api/v1/posts');
-  const posts = await res.json();
-
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  };
 }
