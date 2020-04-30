@@ -18,6 +18,9 @@ const SignIn = () => {
             flexDirection: 'row',
           }}
         >
+          <Link href='/posts'>
+            <Button>View Posts</Button>
+          </Link>
           <Button onClick={signInWithGoogle}>Login</Button>
         </div>
       ) : (
@@ -29,6 +32,12 @@ const SignIn = () => {
             flexDirection: 'row',
           }}
         >
+          <Link href='/posts'>
+            <Button>View Posts</Button>
+          </Link>
+          <Link href='/createpost'>
+            <Button>Create A Post</Button>
+          </Link>
           <Link href='/user'>
             <Button>Account</Button>
           </Link>

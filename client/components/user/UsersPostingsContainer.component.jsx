@@ -141,7 +141,10 @@ const UsersPostingsContainer = (props) => {
             <UsersPostings props={props} />
           </Typography>
           <Typography paragraph>
-            <UsersClaimedPostings props={props.props.postGuests} />
+            <UsersClaimedPostings
+              props={props}
+              // props={props.props.postGuests}
+            />
           </Typography>
         </main>
       </div>
