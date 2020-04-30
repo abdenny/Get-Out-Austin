@@ -15,21 +15,37 @@ let UsersClaimedPostings = (props) => {
   }, [userGlobal]);
 
   let postToAdd = () => {
+    let listOfIndex = [];
+    let displayedPostings = [];
     if (userGlobal) {
-      let mappedPosts = props.props.filter((post) => {
+      let mappedPosts = props.props.props.postGuests.filter((post) => {
         if (post.uid === userGlobal.uid) {
-          return post;
+          return post.post_id;
         }
       });
-      console.log(mappedPosts);
-      setData(mappedPosts);
+      mappedPosts.forEach((post) => {
+        listOfIndex.push(post.post_id);
+      });
+
+      let postsToDisplay = props.props.props.posts.filter((postings) => {
+        listOfIndex.forEach((index) => {
+          if (index == postings.id) {
+            displayedPostings.push(postings);
+          }
+        });
+      });
+      setData(displayedPostings);
     }
   };
 
   return (
     <>
       <h1>Postings Attending</h1>
-      <span>{JSON.stringify(postData)}</span>
+      {postData.length > 0 ? (
+        <span>{JSON.stringify(postData)}</span>
+      ) : (
+        <span> You are attending posts</span>
+      )}
     </>
   );
 };

@@ -29,7 +29,11 @@ let UsersPostings = (props) => {
   return (
     <>
       <h1>Your Postings</h1>
-      <span>{JSON.stringify(postData)}</span>
+      {postData.length > 0 ? (
+        <span>{JSON.stringify(postData)}</span>
+      ) : (
+        <span> You have no posts</span>
+      )}
     </>
   );
 };
