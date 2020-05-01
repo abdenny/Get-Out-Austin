@@ -101,7 +101,7 @@ const UsersPostingsContainer = (props) => {
             >
               <MenuIcon />
             </IconButton>
-            <Link href='/'>
+            <Link href='/posts'>
               <div style={{ cursor: 'pointer' }}>
                 <Typography variant='h6' noWrap>
                   <ArrowBackIcon style={{ paddingTop: '10px' }} /> Get Out
@@ -144,12 +144,12 @@ const UsersPostingsContainer = (props) => {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          {drawerSelection === 'Attending' && (
+          {drawerSelection === 'Postings' && (
             <Typography paragraph>
               <UsersPostings props={props} />
             </Typography>
           )}
-          {drawerSelection === 'Postings' && (
+          {drawerSelection === 'Attending' && (
             <Typography paragraph>
               <UsersClaimedPostings props={props} />
             </Typography>
