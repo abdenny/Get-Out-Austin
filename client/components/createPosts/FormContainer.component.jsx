@@ -46,26 +46,53 @@ const InputForm = (props) => {
       guest_range: [1, 20],
       date_range: [null, null],
       uid: '',
+      image_avatar: '',
+      address: '',
     },
   });
 
   const onSubmit = (data) => {
     data.uid = userGlobal.uid;
-    fetch('http://localhost:3001/dbwrite/v1/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((result) => {
-        return result.json();
+    data.image_avatar = userGlobal.photoURL;
+    let Lat = '';
+    let Lon = '';
+    let mapbox_description = '';
+    fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${data.address}.json?access_token=pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w`
+    )
+      .then((res) => {
+        return res.json();
       })
-      .then((result) => {
-        setValue({ status: true, data: result });
-        console.log(result);
+      .then((response) => {
+        console.log(response);
+        mapbox_description = response.features[0].place_name;
+        Lon = response.features[0].center[0];
+        Lat = response.features[0].center[1];
+        data = {
+          ...data,
+
+          Lat,
+          Lon,
+          mapbox_description,
+        };
+      })
+      .then(() => {
+        fetch('http://localhost:3001/dbwrite/v1/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((result) => {
+            return result.json();
+          })
+          .then((result) => {
+            setValue({ status: true, data: result });
+            console.log(result);
+          });
+        alert(JSON.stringify(data, null, 2));
       });
-    alert(JSON.stringify(data, null, 2));
   };
   return (
     <>

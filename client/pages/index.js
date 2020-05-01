@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Index(props) {
   const classes = useStyles();
   let filteredItems = [];
-  for (let index = 0; index <= 8; index++) {
+  for (let index = 0; index <= 6; index++) {
     filteredItems.push(props.posts[index]);
   }
   return (
