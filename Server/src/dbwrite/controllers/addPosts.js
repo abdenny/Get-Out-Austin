@@ -1,4 +1,4 @@
-import db from "../../../models";
+import db from '../../../models';
 
 export function addPosts(req, res) {
   //Need to get the uid from the user firebase object, set to 1.
@@ -13,6 +13,10 @@ export function addPosts(req, res) {
   let post_max_guests = req.body.guest_range[1];
   let post_booked_guests = 0;
   let post_min_guests = req.body.guest_range[0];
+  let Lat = req.body.Lat;
+  let Lon = req.body.Lon;
+  let mapbox_description = req.body.mapbox_description;
+  let image_avatar = req.body.image_avatar;
   let post_complete = false;
 
   let createPost = () => {
@@ -30,13 +34,17 @@ export function addPosts(req, res) {
         post_booked_guests,
         post_min_guests,
         post_complete,
+        Lat,
+        Lon,
+        mapbox_description,
+        image_avatar,
       })
       .then((results) => {
         res.send(JSON.stringify(results));
       })
       .catch((err) => {
         console.log(err);
-        res.send(JSON.stringify("Error: ", err));
+        res.send(JSON.stringify('Error: ', err));
       });
   };
 
@@ -45,12 +53,12 @@ export function addPosts(req, res) {
     let notDuplicate = true;
     // let notDuplicate = results[0].post_title === post_title ? false : true;
     if (notDuplicate) {
-      console.log("...creating posting.");
+      console.log('...creating posting.');
       createPost();
     } else {
-      console.log("...duplicate found.");
+      console.log('...duplicate found.');
       res.send(
-        JSON.stringify("Sorry, the posting you added seems to be a duplicate.")
+        JSON.stringify('Sorry, the posting you added seems to be a duplicate.')
       );
     }
   });

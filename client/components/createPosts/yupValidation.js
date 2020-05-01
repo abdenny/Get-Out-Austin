@@ -15,6 +15,11 @@ const validationSchema = Yup.object({
   photos: Yup.string('Photo')
     .required('A photo is required.')
     .url('Photo link is not a valid URL.'),
+  address: Yup.string('Enter an address').required('An address is required.'),
+  // .matches(
+  //   /^(\d{1,}) [a-zA-Z0-9\s]+(\.)? [a-zA-Z]+(\,)? [A-Z]{2} [0-9]{5,6}$/,
+  //   'You must enter a valid address'
+  // ),
 });
 
 export default validationSchema;

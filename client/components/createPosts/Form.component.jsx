@@ -20,6 +20,7 @@ export const Form = (props) => {
       price,
       guest_range,
       date_range,
+      address,
     },
     errors,
     touched,
@@ -123,6 +124,18 @@ export const Form = (props) => {
             error={touched.photos && Boolean(errors.photos)}
             value={photos}
             onChange={change.bind(null, 'photos')}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id='Address'
+            name='address'
+            label='Address'
+            helperText={touched.address ? errors.address : ''}
+            error={touched.address && Boolean(errors.address)}
+            value={address}
+            onChange={change.bind(null, 'address')}
             fullWidth
           />
         </Grid>

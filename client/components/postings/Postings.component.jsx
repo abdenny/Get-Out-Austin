@@ -121,7 +121,7 @@ const Postings = (props) => {
           />
         </Grid>
         <Grid item xs={false} sm={false} md={5} style={{ overflow: 'hidden' }}>
-          <PostingsMap />
+          <PostingsMap props={props.props.posts} />
         </Grid>
       </Grid>
     </Grid>
