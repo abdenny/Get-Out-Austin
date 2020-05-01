@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
 class PostMap extends Component {
   state = {
@@ -19,7 +19,9 @@ class PostMap extends Component {
         mapboxApiAccessToken='pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w'
         onViewportChange={(viewport) => this.setState({ viewport })}
         {...this.state.viewport}
-      />
+      >
+        {/* mapt through marker here */}
+      </ReactMapGL>
     );
   }
 }

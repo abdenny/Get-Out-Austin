@@ -16,6 +16,10 @@ import UserContext from '../src/context/userContext.context';
 import Link from 'next/link';
 import { PageTransition } from 'next-page-transitions';
 import NProgress from 'nprogress';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Hidden from '@material-ui/core/Hidden';
+import Popover from '@material-ui/core/Popover';
 
 Router.events.on('routeChangeStart', (url) => {
   console.log(`Loading: ${url}`);
@@ -27,17 +31,23 @@ Router.events.on('routeChangeError', () => NProgress.done());
 export default function MyApp(props) {
   const { Component, pageProps, router } = props;
   const [user, setUser] = useState(null);
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
       setUser(user);
     });
-
     return () => {
       unsubscribeFromAuth();
     };
   }, []);
-
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -57,7 +67,6 @@ export default function MyApp(props) {
           href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css'
           rel='stylesheet'
         />
-        <link rel='stylesheet' type='text/css' href='/nprogress.css' />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -72,7 +81,45 @@ export default function MyApp(props) {
                 </Typography>
               </div>
             </Link>
-            <SignIn currentUser={user}></SignIn>
+            <Hidden smUp implementation='css'>
+              <IconButton
+                edge='start'
+                color='inherit'
+                aria-label='menu'
+                style={{
+                  position: 'absolute',
+                  top: '6px',
+                  right: '16px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                }}
+                onClick={handleClick}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorReference='anchorPosition'
+                anchorPosition={{ top: 56, left: 525 }}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+                style={{ width: '100vw', margin: '0' }}
+              >
+                <SignIn currentUser={user}></SignIn>
+              </Popover>
+            </Hidden>
+            <Hidden xsDown implementation='css'>
+              <SignIn currentUser={user}></SignIn>
+            </Hidden>
           </Toolbar>
         </UserContext.Provider>
         {/* </AppBar> */}
@@ -80,6 +127,7 @@ export default function MyApp(props) {
           <PageTransition timeout={300} classNames='page-transition'>
             <Component {...pageProps} key={router.route} />
           </PageTransition>
+
           <style jsx global>{`
             .page-transition-enter {
               opacity: 0;
