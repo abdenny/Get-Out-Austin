@@ -10,9 +10,6 @@ import Link from 'next/link';
 
 const PostingCards = (props) => {
   const {
-    avatarUrl,
-    title,
-    subtitle,
     description,
     post_title,
     id,
@@ -21,6 +18,7 @@ const PostingCards = (props) => {
     post_booked_guests,
     post_max_guests,
     post_ending_date,
+    image_avatar,
   } = props;
   let checkValid;
   let checkValidText;
@@ -39,7 +37,7 @@ const PostingCards = (props) => {
   return (
     <Card>
       <CardHeader
-        avatar={<Avatar src={avatarUrl} />}
+        avatar={<Avatar src={image_avatar} />}
         title={post_title}
         subheader={`$${post_price}`}
       />

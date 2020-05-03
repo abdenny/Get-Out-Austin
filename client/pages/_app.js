@@ -67,6 +67,7 @@ export default function MyApp(props) {
           href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css'
           rel='stylesheet'
         />
+        <link rel='shortcut icon' href='2028578.svg' />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

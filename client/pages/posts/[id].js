@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import PostingsMap from '../../components/map/PostingsMap.component';
+import IndividualPostingMap from '../../components/map/IndividualPostingMap.component';
 import StripeButton from '../../components/stripe/stripe-button.component';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -114,7 +114,6 @@ export default (props) => {
   let findPost = () => {
     if (userGlobal) {
       props.posts.forEach((post) => {
-        console.log(post.id);
         if (post.id == router.query.id) {
           setData(post);
         }
@@ -131,19 +130,13 @@ export default (props) => {
     }
   };
 
-  // let findIfBooked = () => {
-  //   props.post_guest.forEach((post_guest)=> {
-  //     if (post_guest.uid === )
-  //   })
-  // }
-
   return (
     <>
       {userGlobal ? (
         <Grid container component='main' className={classes.root}>
           <CssBaseline />
           <Grid item xs={false} sm={6} md={5} className={classes.image}>
-            <PostingsMap />
+            <IndividualPostingMap props={postData} />
           </Grid>
           <Grid
             item
@@ -165,7 +158,6 @@ export default (props) => {
                   {new Date(postGuestData.createdAt).toDateString()}.
                 </Alert>
               )}
-
               <Typography variant='h3'>{postData.post_title}</Typography>
               <div className={classes.form} noValidate>
                 <img className={classes.img} src={postData.post_images}></img>
