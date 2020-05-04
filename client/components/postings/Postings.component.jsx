@@ -26,6 +26,7 @@ const Postings = (props) => {
     });
   };
 
+  //Filter algo used when user asks to filter postings
   let propsFilter;
   if (searchParams.wantSearch) {
     console.log("want search", searchParams.conditionsWanted);
