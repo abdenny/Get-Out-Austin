@@ -67,6 +67,8 @@ export default function MyApp(props) {
           href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css'
           rel='stylesheet'
         />
+        <link rel='stylesheet' type='text/css' href='/nprogress.css' />
+        <link rel='shortcut icon' href='2028578.svg' />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -127,7 +129,6 @@ export default function MyApp(props) {
           <PageTransition timeout={300} classNames='page-transition'>
             <Component {...pageProps} key={router.route} />
           </PageTransition>
-
           <style jsx global>{`
             .page-transition-enter {
               opacity: 0;

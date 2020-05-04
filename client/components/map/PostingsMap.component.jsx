@@ -1,7 +1,11 @@
-import { Component } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import RoomIcon from "@material-ui/icons/Room";
-import IconButton from "@material-ui/core/IconButton";
+
+import { Component } from 'react';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import RoomIcon from '@material-ui/icons/Room';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import Link from 'next/link';
+
 
 class PostMap extends Component {
   state = {
@@ -19,6 +23,7 @@ class PostMap extends Component {
     let locations = this.props.locations;
     console.log(locations);
     return (
+      // <></>
       <ReactMapGL
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxApiAccessToken="pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w"
@@ -50,7 +55,6 @@ class PostMap extends Component {
               </IconButton>
             </Marker>
           );
-          console.log(post.Lat);
         })}
         {this.state.selectedPost ? (
           <Popup
@@ -64,6 +68,11 @@ class PostMap extends Component {
               <h3>{this.state.selectedPost.post_title}</h3>
               <p>{this.state.selectedPost.post_description}</p>
               <p>{this.state.selectedPost.mapbox_description}</p>
+              <Link href={`/posts/${this.state.selectedPost.id}`}>
+                <Button color='secondary' size='small'>
+                  View Posting
+                </Button>
+              </Link>
             </div>
           </Popup>
         ) : null}

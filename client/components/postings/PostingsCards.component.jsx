@@ -10,9 +10,6 @@ import Link from "next/link";
 
 const PostingCards = (props) => {
   const {
-    image_avatar,
-    title,
-    subtitle,
     description,
     post_title,
     id,
@@ -21,6 +18,7 @@ const PostingCards = (props) => {
     post_booked_guests,
     post_max_guests,
     post_ending_date,
+    image_avatar,
   } = props;
   let checkValid;
   let checkValidText;

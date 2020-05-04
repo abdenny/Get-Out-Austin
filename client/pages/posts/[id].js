@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
-import UserContext from "../../src/context/userContext.context";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import PostingsMap from "../../components/map/PostingsMap.component";
-import StripeButton from "../../components/stripe/stripe-button.component";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import Alert from "@material-ui/lab/Alert";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
+import UserContext from '../../src/context/userContext.context';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import IndividualPostingMap from '../../components/map/IndividualPostingMap.component';
+import StripeButton from '../../components/stripe/stripe-button.component';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Alert from '@material-ui/lab/Alert';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,7 +116,6 @@ export default (props) => {
   let findPost = () => {
     if (userGlobal) {
       props.posts.forEach((post) => {
-        console.log(post.id);
         if (post.id == router.query.id) {
           setData(post);
         }
@@ -131,19 +132,15 @@ export default (props) => {
     }
   };
 
-  // let findIfBooked = () => {
-  //   props.post_guest.forEach((post_guest)=> {
-  //     if (post_guest.uid === )
-  //   })
-  // }
-
   return (
     <>
       {userGlobal ? (
         <Grid container component="main" className={classes.root}>
           <CssBaseline />
           <Grid item xs={false} sm={6} md={5} className={classes.image}>
-            <PostingsMap locations={[postData]} />
+
+            <IndividualPostingMap props={postData} />
+
           </Grid>
           <Grid
             item
@@ -166,7 +163,8 @@ export default (props) => {
                 </Alert>
               )}
 
-              <Typography variant="h3">{postData.post_title}</Typography>
+              <Typography variant='h3'>{postData.post_title}</Typography>
+
               <div className={classes.form} noValidate>
                 <img className={classes.img} src={postData.post_images}></img>
                 <Typography className={classes.fix} component="h3" variant="h6">
