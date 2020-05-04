@@ -10,7 +10,7 @@ class PostMap extends Component {
       height: '100vh',
       latitude: 30.266666,
       longitude: -97.7431,
-      zoom: 11,
+      zoom: 10,
     },
     selectedPost: null,
   };
