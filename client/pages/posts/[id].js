@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import UserContext from '../../src/context/userContext.context';
@@ -16,34 +17,35 @@ import Select from '@material-ui/core/Select';
 import Alert from '@material-ui/lab/Alert';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: '20px',
-    height: '100vh',
+    marginTop: "20px",
+    height: "100vh",
   },
   image: {
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: "no-repeat",
     backgroundColor:
-      theme.palette.type === 'light'
+      theme.palette.type === "light"
         ? theme.palette.grey[50]
         : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    overflow: 'hidden',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    overflow: "hidden",
   },
   paper: {
     margin: theme.spacing(6, 4),
     marginTop: 0,
     padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    width: '100',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "100",
   },
   img: {
-    width: '90%',
+    width: "90%",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -54,21 +56,21 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(7),
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
     padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
   fix: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginLeft: "auto",
+    marginRight: "auto",
     marginTop: theme.spacing(1),
   },
   alert: {
@@ -133,10 +135,12 @@ export default (props) => {
   return (
     <>
       {userGlobal ? (
-        <Grid container component='main' className={classes.root}>
+        <Grid container component="main" className={classes.root}>
           <CssBaseline />
           <Grid item xs={false} sm={6} md={5} className={classes.image}>
+
             <IndividualPostingMap props={postData} />
+
           </Grid>
           <Grid
             item
@@ -151,35 +155,37 @@ export default (props) => {
               {isPostingPurchased && (
                 <Alert
                   className={classes.alert}
-                  variant='outlined'
-                  severity='success'
+                  variant="outlined"
+                  severity="success"
                 >
-                  You purchased this activity on{' '}
+                  You purchased this activity on{" "}
                   {new Date(postGuestData.createdAt).toDateString()}.
                 </Alert>
               )}
+
               <Typography variant='h3'>{postData.post_title}</Typography>
+
               <div className={classes.form} noValidate>
                 <img className={classes.img} src={postData.post_images}></img>
-                <Typography className={classes.fix} component='h3' variant='h6'>
+                <Typography className={classes.fix} component="h3" variant="h6">
                   {postData.post_description}
                 </Typography>
-                <Typography className={classes.fix} component='h3'>
+                <Typography className={classes.fix} component="h3">
                   Max Guests: {postData.post_max_guests}
                 </Typography>
-                <Typography component='h3'>
+                <Typography component="h3">
                   Minimum Guests: {postData.post_min_guests}
                 </Typography>
-                <Typography component='h3'>
+                <Typography component="h3">
                   # of Booked Guests: {postData.post_booked_guests}
                 </Typography>
-                <Typography component='h3'>${postData.post_price}</Typography>
-                <InputLabel id='demo-simple-select-label'>
+                <Typography component="h3">${postData.post_price}</Typography>
+                <InputLabel id="demo-simple-select-label">
                   Number of Guests
                 </InputLabel>
                 <Select
-                  labelId='demo-simple-select-label'
-                  id='demo-simple-select'
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
                   value={guest_amount}
                   onClick={handleChange}
                 >
@@ -197,7 +203,7 @@ export default (props) => {
                   post_guests={guest_amount}
                   disabled={shouldComponentBeDisabled}
                 />
-                <Link href='/posts'>
+                <Link href="/posts">
                   <ArrowBackIcon />
                 </Link>
                 <Box mt={5}>
@@ -219,9 +225,9 @@ export default (props) => {
 
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
-  const res = await fetch('http://localhost:3001/api/v1/posts');
+  const res = await fetch("http://localhost:3001/api/v1/posts");
   const posts = await res.json();
-  const res2 = await fetch('http://localhost:3001/api/v1/posts/guests');
+  const res2 = await fetch("http://localhost:3001/api/v1/posts/guests");
   const post_guests = await res2.json();
 
   // By returning { props: posts }, the Blog component

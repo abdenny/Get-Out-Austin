@@ -1,7 +1,7 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useRouter } from 'next/router';
-import UserContext from '../../src/context/userContext.context';
-import UsersPostsCards from './UsersPostsCards.component';
+import React, { useEffect, useContext, useState } from "react";
+import { useRouter } from "next/router";
+import UserContext from "../../src/context/userContext.context";
+import UsersPostsCards from "./UsersPostsCards.component";
 
 let UsersClaimedPostings = (props) => {
   const router = useRouter();
@@ -11,6 +11,7 @@ let UsersClaimedPostings = (props) => {
   useEffect(() => {
     if (router) {
       postToAdd();
+      console.log(userGlobal);
     }
   }, [userGlobal]);
 
