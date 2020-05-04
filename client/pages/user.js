@@ -12,9 +12,13 @@ export default user;
 
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
-  const res = await fetch('http://localhost:3001/api/v1/posts');
+  const res = await fetch(
+    'hhttp://ec2-18-223-99-203.us-east-2.compute.amazonaws.com/api/v1/posts'
+  );
   const posts = await res.json();
-  const res2 = await fetch('http://localhost:3001/api/v1/posts/guests');
+  const res2 = await fetch(
+    'hhttp://ec2-18-223-99-203.us-east-2.compute.amazonaws.com/api/v1/posts/guests'
+  );
   const postGuests = await res2.json();
 
   // By returning { props: posts }, the Blog component

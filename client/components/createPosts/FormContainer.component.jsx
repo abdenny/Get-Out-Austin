@@ -77,13 +77,16 @@ const InputForm = (props) => {
         };
       })
       .then(() => {
-        fetch('http://localhost:3001/dbwrite/v1/posts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        })
+        fetch(
+          'http://ec2-18-223-99-203.us-east-2.compute.amazonaws.com/dbwrite/v1/posts',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          }
+        )
           .then((result) => {
             return result.json();
           })
@@ -91,7 +94,6 @@ const InputForm = (props) => {
             setValue({ status: true, data: result });
             console.log(result);
           });
-        alert(JSON.stringify(data, null, 2));
       });
   };
   return (
