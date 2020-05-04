@@ -30,13 +30,16 @@ const StripeCheckoutButton = ({
       paid: true,
     };
     console.log(token);
-    fetch('http://localhost:3001/dbwrite/v1/posts/guests', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(token),
-    }).then((result) => {
+    fetch(
+      'http://ec2-18-223-99-203.us-east-2.compute.amazonaws.com/dbwrite/v1/posts/guests',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(token),
+      }
+    ).then((result) => {
       return result.json();
     });
 
