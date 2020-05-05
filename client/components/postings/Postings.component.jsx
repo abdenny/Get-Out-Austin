@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
-import PostingsContent from "./PostingsContent.component";
-import PostingsMap from "../map/PostingsMap.component";
-import PostToolBar from "./Toolbar.components";
-import Router from "next/router";
-import Hidden from "@material-ui/core/Hidden";
+import React, { useState, useContext } from 'react';
+import { Grid } from '@material-ui/core';
+import PostingsContent from './PostingsContent.component';
+import PostingsMap from '../map/PostingsMap.component';
+import PostToolBar from './Toolbar.components';
+import Router from 'next/router';
+import Hidden from '@material-ui/core/Hidden';
+import UserContext from '../../src/context/userContext.context';
 
 const Postings = (props) => {
+  const { userGlobal } = useContext(UserContext);
   const [searchParams, setValue] = useState({
     categories: [],
     guests: 1,
     max_price: 20,
-    search: "",
+    search: '',
     wantSearch: false,
     conditionsWanted: {},
   });
@@ -22,7 +24,7 @@ const Postings = (props) => {
       categories: [],
       guests: 1,
       max_price: 20,
-      search: "",
+      search: '',
       wantSearch: false,
       conditionsWanted: {},
     });
@@ -32,14 +34,14 @@ const Postings = (props) => {
 
   let propsFilter;
   if (searchParams.wantSearch) {
-    console.log("want search", searchParams.conditionsWanted);
+    console.log('want search', searchParams.conditionsWanted);
     propsFilter = props.props.posts.filter((post) => {
       let conditionsNeeded = Object.keys(searchParams.conditionsWanted).length;
       let conditionsMet = 0;
       console.log(conditionsNeeded, conditionsMet);
       for (var key in searchParams.conditionsWanted) {
         switch (key) {
-          case "categories":
+          case 'categories':
             if (
               searchParams.conditionsWanted.categories.includes(
                 post.post_category
@@ -52,33 +54,33 @@ const Postings = (props) => {
               break;
             }
             break;
-          case "guests":
+          case 'guests':
             if (
               post.post_max_guests - post.post_booked_guests >
               parseInt(searchParams.conditionsWanted.guests)
             ) {
               conditionsMet += 1;
               break;
-            } else if (searchParams.conditionsWanted.guests === "") {
+            } else if (searchParams.conditionsWanted.guests === '') {
               conditionsMet += 1;
               break;
             }
             break;
-          case "max_price":
+          case 'max_price':
             if (
               post.post_price <
               parseInt(searchParams.conditionsWanted.max_price)
             ) {
               conditionsMet += 1;
-              console.log("max price met", conditionsMet);
+              console.log('max price met', conditionsMet);
               break;
-            } else if (searchParams.conditionsWanted.max_price === "") {
+            } else if (searchParams.conditionsWanted.max_price === '') {
               conditionsMet += 1;
               break;
             }
-            console.log("max price not met");
+            console.log('max price not met');
             break;
-          case "search":
+          case 'search':
             if (
               post.post_title
                 .toLowerCase()
@@ -92,7 +94,7 @@ const Postings = (props) => {
             }
             break;
           default:
-            console.log("hello");
+            console.log('hello');
             break;
         }
       }
@@ -101,7 +103,7 @@ const Postings = (props) => {
   }
 
   return (
-    <Grid container direction="column">
+    <Grid container direction='column'>
       <Grid item container>
         <Grid item xs={12} sm={12} md={12}>
           <PostToolBar
@@ -115,7 +117,7 @@ const Postings = (props) => {
           xs={12}
           sm={12}
           md={7}
-          style={{ maxHeight: "100vh", overflow: "auto", padding: "10px" }}
+          style={{ maxHeight: '100vh', overflow: 'auto', padding: '10px' }}
         >
           <PostingsContent
             propsForPostingsContent={
@@ -123,9 +125,9 @@ const Postings = (props) => {
             }
           />
         </Grid>
-        <Grid item xs={false} sm={false} md={5} style={{ overflow: "hidden" }}>
+        <Grid item xs={false} sm={false} md={5} style={{ overflow: 'hidden' }}>
           <Hidden xsDown>
-            <PostingsMap locations={props.props.posts} />
+            <PostingsMap user={userGlobal} locations={props.props.posts} />
           </Hidden>
         </Grid>
       </Grid>

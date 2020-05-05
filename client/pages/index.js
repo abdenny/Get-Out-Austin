@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import UserContext from '../src/context/userContext.context';
 import Link from 'next/link';
 import 'isomorphic-unfetch';
 
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Index(props) {
+  const { userGlobal } = useContext(UserContext);
   const classes = useStyles();
   let filteredItems = [];
   for (let index = 0; index <= 8; index++) {
@@ -111,11 +113,15 @@ export default function Index(props) {
                     <Typography>{card.post_description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Link href={`/posts/${card.id}`}>
-                      <Button size='small' color='secondary'>
-                        View
-                      </Button>
-                    </Link>
+                    {userGlobal ? (
+                      <Link href={`/posts/${card.id}`}>
+                        <Button size='small' color='secondary'>
+                          View
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Typography color='secondary'>Login to view</Typography>
+                    )}
                   </CardActions>
                 </Card>
               </Grid>
