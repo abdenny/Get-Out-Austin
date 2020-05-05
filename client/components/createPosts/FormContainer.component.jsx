@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import validationSchema from './yupValidation';
 import PostToast from './PostToast.component';
 import UserContext from '../../src/context/userContext.context';
+import 'isomorphic-unfetch';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
