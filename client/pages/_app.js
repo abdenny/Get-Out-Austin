@@ -63,6 +63,15 @@ export default function MyApp(props) {
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
         />
+        <meta
+          name='description'
+          content='Designed to connect adventure seekers. Find your next hobby,
+              event, or excursion.'
+        />
+        <meta
+          name='keywords'
+          content='Austin, Texas, Outdoors, Activities, Things to do, Hiking, Camping, Adventure, Festivals, Lessons, Animals, Kayaking, Skydiving'
+        />
         <link
           href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css'
           rel='stylesheet'
