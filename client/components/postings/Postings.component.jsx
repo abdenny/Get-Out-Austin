@@ -3,6 +3,8 @@ import { Grid } from '@material-ui/core';
 import PostingsContent from './PostingsContent.component';
 import PostingsMap from '../map/PostingsMap.component';
 import PostToolBar from './Toolbar.components';
+import Router from 'next/router';
+
 
 const Postings = (props) => {
   const [searchParams, setValue] = useState({
@@ -27,6 +29,7 @@ const Postings = (props) => {
   };
 
   //Filter algo used when user asks to filter postings
+
   let propsFilter;
   if (searchParams.wantSearch) {
     console.log('want search', searchParams.conditionsWanted);
