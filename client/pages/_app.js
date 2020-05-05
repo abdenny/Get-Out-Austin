@@ -59,6 +59,7 @@ export default function MyApp(props) {
     <React.Fragment>
       <Head>
         <title>Get Out, Austin</title>
+
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
@@ -71,6 +72,10 @@ export default function MyApp(props) {
         <meta
           name='keywords'
           content='Austin, Texas, Outdoors, Activities, Things to do, Hiking, Camping, Adventure, Festivals, Lessons, Animals, Kayaking, Skydiving'
+        />
+        <meta
+          http-equiv='Content-Security-Policy'
+          content='upgrade-insecure-requests'
         />
         <link
           href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css'
