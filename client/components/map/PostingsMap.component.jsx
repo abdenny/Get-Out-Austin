@@ -1,4 +1,3 @@
-
 import { Component } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import RoomIcon from '@material-ui/icons/Room';
@@ -6,12 +5,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
-
 class PostMap extends Component {
   state = {
     viewport: {
-      width: "600px",
-      height: "100vh",
+      width: '600px',
+      height: '100vh',
       latitude: 30.266666,
       longitude: -97.7431,
       zoom: 11,
@@ -21,14 +19,12 @@ class PostMap extends Component {
 
   render() {
     let locations = this.props.locations;
-    console.log(locations);
     return (
-      // <></>
       <ReactMapGL
-        mapStyle="mapbox://styles/mapbox/streets-v9"
-        mapboxApiAccessToken="pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w"
+        mapStyle='mapbox://styles/mapbox/streets-v9'
+        mapboxApiAccessToken='pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w'
         onViewportChange={(viewport) => this.setState({ viewport })}
-        mapStyle="mapbox://styles/abdenny/ck9okzsce0kzf1iqtaqm9ddsq"
+        mapStyle='mapbox://styles/abdenny/ck9okzsce0kzf1iqtaqm9ddsq'
         {...this.state.viewport}
       >
         {locations.map((post, index) => {

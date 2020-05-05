@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'row',
     },
     [theme.breakpoints.down('xs')]: {
-      // position: "absolute",
-      // right: "16px",
-      // top: "12px",
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

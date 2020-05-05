@@ -72,8 +72,8 @@ export default function Index(props) {
               color='textSecondary'
               paragraph
             >
-              Designed to connect adventure seekers. Outdoor lovers all around
-              Austin can find their next party, event, or excursion.
+              Designed to connect adventure seekers. Find your next hobby,
+              event, or excursion.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify='center'>
