@@ -10,7 +10,6 @@ const Posts = (props) => {
   );
 };
 export async function getServerSideProps() {
-  // Call an external API endpoint to get posts.
   const res = await fetch(
     'http://ec2-18-223-99-203.us-east-2.compute.amazonaws.com/api/v1/posts'
   );
