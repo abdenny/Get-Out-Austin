@@ -55,7 +55,7 @@ const PostingCards = (props) => {
       </CardContent>
       <CardActions>
         {checkValid ? (
-          <Link href={`/posts/${id}`}>
+          <Link href={`/posts/${id}`} as={`/post/${id}`}>
             <Button color='secondary' size='small'>
               View Posting
             </Button>
