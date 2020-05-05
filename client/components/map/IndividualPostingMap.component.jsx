@@ -18,7 +18,6 @@ class PostMap extends Component {
   render() {
     let locations = this.props.props;
     return (
-      // <></>
       <ReactMapGL
         mapStyle='mapbox://styles/mapbox/streets-v9'
         mapboxApiAccessToken='pk.eyJ1IjoiYWJkZW5ueSIsImEiOiJjazlkNjNrMmUwMGRkM21sZTB0OXdseWl2In0.iQVMKfidmj4BKLbJxAot6w'

@@ -5,6 +5,7 @@ import PostingsMap from '../map/PostingsMap.component';
 import PostToolBar from './Toolbar.components';
 import Router from 'next/router';
 
+
 const Postings = (props) => {
   const [searchParams, setValue] = useState({
     categories: [],
@@ -90,7 +91,6 @@ const Postings = (props) => {
               break;
             }
             break;
-
           default:
             console.log('hello');
             break;
