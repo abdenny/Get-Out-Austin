@@ -1,0 +1,3 @@
+This is a Brave Rewards publisher verification file.
+Domain: get-out-austin.now.sh
+Token: 488e1a0066dcbf7f7edbe5729c4ad66c7435d1e1e62661a409a6e9dbffb4aa57
