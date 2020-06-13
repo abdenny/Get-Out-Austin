@@ -56,7 +56,7 @@
 <h2><u>Lessons Learned</u><h2>
 <ol>
     <li>An application's tech stack should be chosen to fulfill need/</li>
-    <li>Server-Side rendering delivers HTML to the client.</li>
+    <li>Server-Side rendering delivers HTML to the client and improves SEO.</li>
     <li></li>
 <ol>
 
