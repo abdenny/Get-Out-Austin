@@ -1,7 +1,9 @@
 <h1>Get Out, Austin<h1>
 
+![Get Out, Austin Demo](images/getoutaustin.gif)
+
 <h2><u>Overview:</u><h2>
-<h4>We buil an Air-Bnb Experiences inspired web application that allows customers to book experiences and guides to post experiences. A user-friendly design allows customers to easily navigate from the hompepage to booking an experience with x-guests. The full-stack web application features location display through MapBox, payment through Stripe, and authentication through Google OAuth. The application also uses server-side rendering through Next.js. </h4>
+<h4>We built an Air-Bnb Experiences inspired web application that allows customers to book experiences and guides to post experiences. A user-friendly design allows customers to easily navigate from the hompepage to booking an experience with x-guests. The full-stack web application features location display through MapBox, payment through Stripe, and authentication through Google OAuth. The application also uses server-side rendering through Next.js. </h4>
 
 </br>
 
@@ -41,21 +43,21 @@
     <li>MapBox</li>
     <li>Google Firebase</li>
     <li>Stripe Payment</li>
-<ul>
+</ul>
 
 <h2><u>MVP(minimum viable product):</u><h2>
 <ul>
     <li></li>
-<ul>
+</ul>
 
 <h2><u>Stretch Goals Completed:</u><h2>
 <ul>
     <li></li>
-<ul>
+</ul>
 
 <h2><u>Lessons Learned</u><h2>
 <ol>
     <li>An application's tech stack should be chosen to fulfill need/</li>
     <li>Server-Side rendering delivers HTML to the client and improves SEO.</li>
     <li></li>
-<ol>
+</ol>
