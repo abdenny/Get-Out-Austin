@@ -1,6 +1,8 @@
 <h1>Get Out, Austin<h1>
 
+<p align="center>
 ![Get Out, Austin Demo](images/getoutaustin.gif)
+</p>
 
 <h2><u>Overview:</u><h2>
 <h4>We built an Air-Bnb Experiences inspired web application that allows customers to book experiences and guides to post experiences. A user-friendly design allows customers to easily navigate from the hompepage to booking an experience with x-guests. The full-stack web application features location display through MapBox, payment through Stripe, and authentication through Google OAuth. The application also uses server-side rendering through Next.js. </h4>
