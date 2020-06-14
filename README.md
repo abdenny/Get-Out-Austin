@@ -5,7 +5,10 @@
     <br/>
     <br/>
     <br/>
-    <a href="https://get-out-austin.now.sh/">View Demo</a>
+    <p align="center">
+        <a href="https://get-out-austin.now.sh/">View Demo</a>
+    </p>
+    
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -48,19 +51,19 @@
     <li>AWS EC2<li>
 </ul>
 
-<h3>APIs:<h3>
+<h3>APIs:</h3>
 <ul>
     <li>MapBox</li>
     <li>Google Firebase</li>
     <li>Stripe Payment</li>
 </ul>
 
-<h2><u>MVP(minimum viable product):</u><h2>
+<h2><u>MVP(minimum viable product):</u></h2>
 <ul>
     <li></li>
 </ul>
 
-<h2><u>Stretch Goals Completed:</u><h2>
+<h2><u>Stretch Goals Completed:</u></h2>
 <ul>
     <li></li>
 </ul>
@@ -77,12 +80,12 @@
 
 ## The Team
 
-<h3>Austin Denny<h3>
+<h3>Austin Denny</h3>
 <b>Team role:</b> 
 </br>
 
-<h3>Daniel Dolan<h3>
-<b>Team role:</b>React, JavaScript, Next.js, Node.js, Express, PostgreSQL, AWS, Formik, MapBox. 
+<h3>Daniel Dolan</h3>
+<b>Team role:</b> React, JavaScript, Next.js, Node.js, Express, PostgreSQL, AWS, Formik, MapBox. 
 </br>
 </br>
 </br>
