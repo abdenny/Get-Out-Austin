@@ -34,7 +34,7 @@
     <li>Sequelize</li>
     <li>Vercel</li>
     <li>AWS EC2<li>
-<ul>
+</ul>
 
 <h3>APIs:<h3>
 <ul>
@@ -59,16 +59,3 @@
     <li>Server-Side rendering delivers HTML to the client and improves SEO.</li>
     <li></li>
 <ol>
-
-
-
-
-
-
-
-
-
-
-
-
-
