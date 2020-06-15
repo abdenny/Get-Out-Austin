@@ -29,7 +29,14 @@
 
 ## About The Project
 
-<h4>We built an Air-Bnb Experiences inspired web application that allows customers to book experiences and guides to post experiences. A user-friendly design allows customers to easily navigate from the hompepage to booking an experience with x-guests. The full-stack web application features location display through MapBox, payment through Stripe, and authentication through Google OAuth. The application also uses server-side rendering through Next.js. </h4>
+<ul>
+    <li>
+    Get Out, Austin is an Airbnb Experiences style web app that allows customers to book and post events around Austin, Texas. Get Out, Austin employs many technologies from the React ecosystem: Next.js for server-side rendering, React Hooks for stateful components, Context API for state management, Material-UI for interface design, and more.  </li>
+    <br>
+<li>Get Out, Austin was developed with mobile-first and user-friendly design at the forefront. With an attractive and straightforward UI,  customers can easily navigate the site on any device. Get Out, Austin integrates microservices commonly found in enterprise sites. Locations are displayed using MapBox, payments are processed and authorized using the Stripe API, user registration integrates Google Firebase. </li>
+<br>
+<li>The back-end of the application uses a PostgreSQL database hosted on AWS RDS. Allowing the front-end to access this information required the creation of a REST API on a node server. Our Express server is hosted on EC2 using NGINX and pm2. The client-side of our application is hosted on Vercel. This hosting platform allows us to take advantage of the unique life-cycle methods from Next.js. The application takes advantage of server-side rendering, allowing for better SEO and client performance. </li>
+</ul>
 
 ## Built With
 
@@ -49,13 +56,14 @@
     <li>Sequelize</li>
     <li>Vercel</li>
     <li>AWS EC2<li>
+     <li>AWS RDS<li>
 </ul>
 
 <h3>APIs:</h3>
 <ul>
     <li>MapBox</li>
     <li>Google Firebase</li>
-    <li>Stripe Payment</li>
+    <li>Stripe</li>
 </ul>
 
 <h2><u>MVP(minimum viable product):</u></h2>
@@ -81,7 +89,7 @@
 ## The Team
 
 <h3>Austin Denny</h3>
-<b>Team role:</b> 
+<b>Team role:</b> React, Context API, Next.js, Node.js, Express, PostgreSQL, AWS, Stripe,Firebase, MapBox. 
 </br>
 
 <h3>Daniel Dolan</h3>
