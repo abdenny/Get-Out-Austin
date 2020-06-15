@@ -67,7 +67,7 @@
     <li>Stripe</li>
 </ul>
 
-<h2><u>MVP(minimum viable product):</u></h2>
+<!--h2><u>MVP(minimum viable product):</u></h2>
 <ul>
     <li></li>
 </ul>
@@ -75,7 +75,7 @@
 <h2><u>Stretch Goals Completed:</u></h2>
 <ul>
     <li></li>
-</ul>
+</ul> -->
 
 ## Project Takeaways
 
