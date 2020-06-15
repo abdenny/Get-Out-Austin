@@ -18,6 +18,7 @@
 - [About the Project](#about-the-project)
   - [Built With](#built-with)
   - [Lessons Learned](#lessons-learned)
+- [Code Snippets](#code-snippets)
 - [The Team](#the-team)
 
 <!-- - [Getting Started](#getting-started)
@@ -68,20 +69,26 @@
 
 <h2><u>MVP(minimum viable product):</u></h2>
 <ul>
-    <li></li>
+    <li>Next.js/React client with ability to create and view experiences.</li>
+    <li>Node.js/Express server to perform CRUD operations on PostgreSQL db.</li>
+    <li>Attractive and Straightforward UI.</li>
 </ul>
 
 <h2><u>Stretch Goals Completed:</u></h2>
 <ul>
-    <li></li>
+    <li>User authentication with Google Firebase</li>
+    <li>Payment validation with Stripe.</li>
+    <li>Displaying experience location through MapBox.</li>
 </ul>
+<br/>
+
+## Code Snippets
 
 ## Lessons Learned
 
 <ol>
     <li>An application's tech stack should be chosen to fulfill need/</li>
     <li>Server-Side rendering delivers HTML to the client and improves SEO.</li>
-    <li></li>
 </ol>
 
 </br>
@@ -93,7 +100,7 @@
 </br>
 
 <h3>Daniel Dolan</h3>
-<b>Team role:</b> React, JavaScript, Next.js, Node.js, Express, PostgreSQL, AWS, Formik, MapBox. 
+<b>Team role:</b> React, JavaScript, Context API, Next.js, Node.js, Express, PostgreSQL, AWS, Formik, MapBox. 
 </br>
 </br>
 </br>
