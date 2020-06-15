@@ -68,7 +68,7 @@
     <li>Stripe</li>
 </ul>
 
-h2><u>MVP(minimum viable product):</u></h2>
+<h2><u>MVP(minimum viable product):</u></h2>
 
 <ul>
     <li>Next.js/React client with ability to create and view experiences.</li>
